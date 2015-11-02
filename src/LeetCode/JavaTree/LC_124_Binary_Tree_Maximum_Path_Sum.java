@@ -83,34 +83,44 @@ public class LC_124_Binary_Tree_Maximum_Path_Sum {
  */
 
  class Solution {
-    private class ResultType {
+    private class Result {
         int singlePath, maxPath;
-        ResultType(int singlePath, int maxPath) {
+        Result(int singlePath, int maxPath) {
             this.singlePath = singlePath;
             this.maxPath = maxPath;
         }
     }
 
-    private ResultType helper(TreeNode root) {
+    private Result helper(TreeNode root) {
+        //别看这个简单，null节点的singlepath必须为0，后面加和不加都一样的，非常重要
+        //null节点就好像一个虚拟节点，所以她得maxPath必须为最小值，后面不会被选择
+        //这是算法成功地关键点,怎么赋值是由它们将来会怎么被使用来决定的
         if (root == null) {
-            return new ResultType(0, Integer.MIN_VALUE);
+            return new Result(0, Integer.MIN_VALUE);
         }
         // Divide
-        ResultType left = helper(root.left);
-        ResultType right = helper(root.right);
+        Result left = helper(root.left);
+        Result right = helper(root.right);
 
         // Conquer
+        //singlePath一旦了0比较了，有可能提升，所以可能是path上不存在的值
+        //这一点不要紧是因为他是辅助的，他必须大于等于0，且看后面的使用
         int singlePath = Math.max(left.singlePath, right.singlePath) + root.val;
         singlePath = Math.max(singlePath, 0);
+        // 如下两行做法是错误的
+        // int singlePath = Math.max(Math.max(left.singlePath, right.singlePath), 0);
+        // singlePath += root.val;
 
+        //注意一般情况下，如下二者是不连通的
+        //
         int maxPath = Math.max(left.maxPath, right.maxPath);
         maxPath = Math.max(maxPath, left.singlePath + right.singlePath + root.val);
 
-        return new ResultType(singlePath, maxPath);
+        return new Result(singlePath, maxPath);
     }
 
     public int maxPathSum(TreeNode root) {
-        ResultType result = helper(root);
+        Result result = helper(root);
         return result.maxPath;
     }
 }

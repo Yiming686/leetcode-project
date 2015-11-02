@@ -55,7 +55,7 @@ public class LC_022_Generate_Parentheses {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		createParenthsis(6);
+		createParenthsis(3);
 	}
 
 	private static void createParenthsis(int n) {
@@ -69,7 +69,7 @@ public class LC_022_Generate_Parentheses {
 			int curr) {
 		// TODO Auto-generated method stub
 		// 这个条件就是说（即使没有了还要继续，）一旦没有了就终止
-		 System.out.printf("l=%s,r=%s,curr=%s   \n", left, right, curr);
+//		 System.out.printf("l=%s,r=%s,curr=%s   \n", left, right, curr);
 
 		if (left < 0 || right < left)
 			return;
@@ -86,4 +86,62 @@ public class LC_022_Generate_Parentheses {
 			// }
 		}
 	}
+	/*
+	思路
+
+	针对一个长度为2n的合法排列，第1到2n个位置都满足如下规则
+
+	1
+	左括号的个数≥右括号的个数
+	所以，我们就可以按照这个规则去打印括号
+
+	假设在位置k我们还剩余left个左括号和right个右括号
+
+	如果left和right均为零，则说明我们已经完成一个合法排列，可以将其打印出来
+	如果left>0，打印左括号
+	如果right>0 并且 right>left 打印右括号
+	*/
+	
+//	best solution, using StringBuffer,worked
+	static List<String> generate(int n) {
+		List<String> list = new ArrayList<String>();
+		genereate(n, n, new StringBuffer(), list);
+		return list;
+	}
+	private static void genereate(int left, int right, StringBuffer sb, List<String> list) {
+		// TODO Auto-generated method stub
+		if (left == 0 && right == 0) {
+			list.add(sb.toString());
+			return;
+		}
+		if(left > 0){
+			genereate(left - 1, right , sb.append("("), list);
+			sb.deleteCharAt(sb.length() -1 );
+		}
+		if(right > 0 && right > left){
+			genereate(left, right - 1 , sb.append(")"), list);
+			sb.deleteCharAt(sb.length() - 1 );
+		}
+	}
+
+//	best solution, using String, worked
+	static List<String> generate2(int n) {
+		List<String> list = new ArrayList<String>();
+		genereate(n, n, "", list);
+		return list;
+	}
+	private static void genereate(int left, int right, String str, List<String> list) {
+		// TODO Auto-generated method stub
+		if (left == 0 && right == 0) {
+			list.add(str.toString());
+			return;
+		}
+		if(left > 0){
+			genereate(left - 1, right , str + "(", list);
+		}
+		if(right > 0 && right > left){
+			genereate(left, right - 1 , str + ")", list);
+		}
+	}
+
 }

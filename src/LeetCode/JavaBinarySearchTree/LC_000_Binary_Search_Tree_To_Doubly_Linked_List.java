@@ -1,4 +1,5 @@
-package LeetCode.JavaTree;
+package LeetCode.JavaBinarySearchTree;
+
 
 public class LC_000_Binary_Search_Tree_To_Doubly_Linked_List {
 

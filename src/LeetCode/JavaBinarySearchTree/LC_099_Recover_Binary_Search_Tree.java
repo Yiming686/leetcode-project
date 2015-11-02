@@ -1,4 +1,4 @@
-package LeetCode.JavaTree;
+package LeetCode.JavaBinarySearchTree;
 
 /*
 Two elements of a binary search tree (BST) are swapped by mistake.
