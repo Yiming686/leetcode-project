@@ -8,13 +8,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-import org.junit.internal.runners.InitializationError;
-
-import com.sun.media.jai.opimage.MinCRIF;
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
-
-import sun.awt.im.InputMethodJFrame;
-
 public class RocketFuel_Racer_Rater_3 {
 	long id;
 	String name;

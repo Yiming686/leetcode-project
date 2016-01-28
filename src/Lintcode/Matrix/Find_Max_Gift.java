@@ -1,12 +1,7 @@
 package Lintcode.Matrix;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import Lintcode.MultiThreading.Volatile.VolatileTest;
-import sun.security.util.Length;
 
 /**
 Find Max Gift in a matrix

@@ -3,12 +3,9 @@ package JavaInterviewQueston;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.Objects;
 //import java.util.HashMap.Entry;
 //import java.util.HashMap.Holder;
-
-import JavaInterviewQueston.MyHashMap2.Entry;
 
 public class WePay_Hash_Table_1 {
 
