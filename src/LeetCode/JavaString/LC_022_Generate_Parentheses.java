@@ -15,6 +15,63 @@ import java.util.List;
  */
 public class LC_022_Generate_Parentheses {
 
+	//jiuzhang solution, worked
+    public static List<String> generateParenthesis3(int n) {
+        List<String> result = new ArrayList<String>();
+        if(n <= 0) {
+            return result;
+        }
+        int[] count = new int[1];
+        generateParenthesis(result,count, "", n, n);
+        return result;
+    }
+    
+	public static void generateParenthesis( List<String> result ,int[] count, String s, int left, int right) {
+	    
+		if(left == 0 && right == 0) {
+			count[0] += 1;
+			System.out.println(""+count[0]+": " + s);
+//			System.out.println(charArr);
+
+			result.add(s);
+			return;
+		}
+		if(left < 0 || right < 0)return;
+		//如果不判断，left和right是否小于0，则Runtime Error Message: java.lang.StackOverflowError
+//		if(left > right || left < 0 || right < 0) {
+//			return; 	
+//		}
+		//s去一个"(",left减一，s取一个")", right义减一
+		//其实是先取"(", 再取")"
+		generateParenthesis(result, count,s + "(", left - 1, right);
+		generateParenthesis(result, count,s + ")", left, right - 1);
+	}
+
+	//jiuzhang solution, modified, worked
+    public List<String> generateParenthesis2(int n) {
+        List<String> rst = new ArrayList<String>();
+        if(n <= 0) {
+            return rst;
+        }
+        generateParenthesis(rst, "",n, 0, 0);
+        return rst;
+    }
+    
+	public void generateParenthesis( List<String> rst , String s,int n, int left, int right) {
+	    
+		if(left == n && right == n) {
+			rst.add(s);
+			return;
+		}
+		if(left < right || left > n || right > n) {
+			return; 	
+		}
+
+		generateParenthesis(rst, s + "(", n,left + 1, right);
+		generateParenthesis(rst, s + ")", n,left, right + 1);
+	}
+
+	
 	// Accepted, 250ms
 	// 如果直接简单循环，然后判断，难度低
 	// 如果直接要给出，这个递归算法，难度还是有点大，
@@ -55,34 +112,38 @@ public class LC_022_Generate_Parentheses {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		createParenthsis(3);
+//		createParenthsis(3);
+		generateParenthesis3(3);
 	}
 
 	private static void createParenthsis(int n) {
 		// TODO Auto-generated method stub
 		char[] charArr = new char[2 * n];
-
-		createParenthsis(charArr, n, n, 0);
+		int[] i = new int[1];
+		createParenthsis(charArr,i, n, n, 0);
 	}
 
-	private static void createParenthsis(char[] charArr, int left, int right,
+	private static void createParenthsis(char[] charArr,int[] i, int left, int right,
 			int curr) {
 		// TODO Auto-generated method stub
 		// 这个条件就是说（即使没有了还要继续，）一旦没有了就终止
 //		 System.out.printf("l=%s,r=%s,curr=%s   \n", left, right, curr);
 
-		if (left < 0 || right < left)
-			return;
-		if (left == 0 && right == 0)
+//		if (left < 0 || right < left)
+//			return;
+		if (left == 0 && right == 0){
+			i[0] += 1;
+			System.out.print(""+i[0]+": ");
 			System.out.println(charArr);
+		}
 		if (curr < charArr.length) {
 			// if (left > 0) {
 			charArr[curr] = '(';
-			createParenthsis(charArr, left - 1, right, curr + 1);
+			createParenthsis(charArr,i, left - 1, right, curr + 1);
 			// }
 			// if (right > left) {
 			charArr[curr] = ')';
-			createParenthsis(charArr, left, right - 1, curr + 1);
+			createParenthsis(charArr,i, left, right - 1, curr + 1);
 			// }
 		}
 	}

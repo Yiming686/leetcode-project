@@ -30,8 +30,8 @@ public class Sort_Colors_by_Case {
         int j = chars.length -1;
         
         while(i<=j){
-            while(i<=j && (chars[i] >= 'a' && chars[i] <= 'z')) i++;
-            while(i<=j && (chars[j] >= 'A' && chars[j] <= 'Z')) j--;
+            while(i<=j && (chars[i] >= 'a' && chars[i] <= 'z')) i++;//i指向大写的
+            while(i<=j && (chars[j] >= 'A' && chars[j] <= 'Z')) j--;//i指向小写的
             if(i<j){
                 chars[i]^=chars[j];
                 chars[j]^=chars[i];

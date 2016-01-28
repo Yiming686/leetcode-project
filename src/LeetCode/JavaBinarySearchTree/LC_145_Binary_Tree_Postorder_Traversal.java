@@ -46,17 +46,23 @@ public class LC_145_Binary_Tree_Postorder_Traversal {
     //九章solution
     public ArrayList<Integer> postorderTraversal3(TreeNode root) {
         ArrayList<Integer> result = new ArrayList<Integer>();
+        if (root == null) return result;
+        
         Stack<TreeNode> stack = new Stack<TreeNode>();
+        
+        //俩指针迭代跑，每次curr跑一下，prev指向先前的curr
         TreeNode prev = null; // previously traversed node
         TreeNode curr = root;
 
-        if (root == null) {
-            return result;
-        }
 
         stack.push(root);
+        //一个while循环，仅仅判断stack是否为空
+        //while里面第一步peek，后面三段if-else对应，每次只可能执行其中的一段，第一段较复杂
+        //什么时候pop呢，只有最后
         while (!stack.empty()) {
             curr = stack.peek();
+            //接下来分析curr和pre的三种相对关系，讨论完毕，prev指向curr
+            //down的时候，如果左不为空push，不考虑其他，左边空了，加右边
             if (prev == null || prev.left == curr || prev.right == curr) { // traverse down the tree
                 if (curr.left != null) {
                     stack.push(curr.left);

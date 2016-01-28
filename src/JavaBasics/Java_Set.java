@@ -1,6 +1,7 @@
 package JavaBasics;
 
-import java.util.SortedSet;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.TreeSet;
 
 public class Java_Set {
@@ -10,8 +11,7 @@ public class Java_Set {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		SortedSet<Long> set = new TreeSet<Long>();
-		
+//		SortedSet<Long> set = new TreeSet<Long>();
 	}
 
 }

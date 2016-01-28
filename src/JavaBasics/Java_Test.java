@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public class Java_Test {
+	
 	static class Position {
 		  final int x, y;
 		  public Position(final int x, final int y) {
@@ -49,10 +51,56 @@ public class Java_Test {
 		// public Position reversePosition(Position position){
 //		     return new Position(position.y,position.x); 
 		// }
-
+		public static int help(int n){
+	        int temp = n;
+	        int count = 0;
+	         while (temp!=0) {
+	        	 temp = temp>>>1;
+	             count ++;
+	         }
+	 		int allOnes = 1;
+	 		allOnes <<=count;
+	 		allOnes-=1;
+	 		n^=allOnes;
+			return n;
+		}
 
 
 	public static void main(String[] args) {
+		
+		int[] arr = {0};
+		
+		int m = 10;
+		System.out.println("2: "+m);
+		m = m>>50;
+//	 	m = m>>>29;
+//		m = m<<2;
+		System.out.println("2: "+m);
+		int num = 5;
+//		int num = 50;
+//		int num = 100;
+		System.out.println("num:"+help(num));
+        int temp = num;
+        int count = 0;
+         while (temp!=0) {
+//             temp = temp&(temp-1);
+        	 temp = temp>>1;
+            //  temp &= (temp-1);
+             count ++;
+         }
+//         System.out.println("count:"+count);
+ 		int rev = 1;
+ 		rev <<=count;
+ 		rev-=1;
+ 		num^=rev;
+// 		return n;
+//		num = num^(0);
+//		System.out.println("num:"+num);
+
+		
+		//        return sum;
+//		int i = 0^922;
+//		System.out.println("XOR:"+ i);
 		// TODO Auto-generated method stub
 		int[][] puzzle1 = {{0, 0, 1, 0, 1}, {0, 0, 0, 0, 0},{0, 1, 1, 1, 1},{0, 1, 1, 0, 0}};
 		Position start = new Position(0, 0);
@@ -104,4 +152,7 @@ public class Java_Test {
 		
 	}
 
+	
+	
+	
 }

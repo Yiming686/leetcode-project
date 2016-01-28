@@ -14,7 +14,32 @@ public class Java_Map {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+//		String[] arr = {"c","b","t"};
+//		String[] arr = new String[3];
+//		String aa = arr[2];
+//		System.out.println(""+aa);
+//		System.out.println(""+arr[2]);
+//		arr[2] = "cddd";
+//		System.out.println(""+aa);
+//		System.out.println(""+arr[2]);
+		
+		Integer[] arr = new Integer[3];
+		Integer aa = arr[2];
+		System.out.println(""+aa);
+		System.out.println(""+arr[2]);
+		arr[2] = new Integer(99);
+		System.out.println(""+aa);
+		System.out.println(""+arr[2]);
+		System.out.println("+++++++++");
+		
 		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put(null, 4);System.out.println(""+map.get(null));
+		map.put(null, 5);System.out.println(""+map.get(null));
+		map.put(null, 6);System.out.println(""+map.get(null));
+		map.entrySet();
+		map.keySet();
+		map.values();
+		
 //		System.out.println(map.size());
 //		map.put("eee", 5);
 //		System.out.println(map.size());

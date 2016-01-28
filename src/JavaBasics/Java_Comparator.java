@@ -4,12 +4,34 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+import java.util.concurrent.locks.Condition;
 
 public class Java_Comparator {
 	// UserComparator
+	
 	public static void main(String[] args) {
+//		Condition cond = (new AbstractQueuedSynchronizer()).new ConditionObject();
+//		AbstractQueuedSynchronizer n = new AbstractQueuedSynchronizer();
+//		Condition cond = n.new ConditionObject();
+//		try {
+//			cond.await();
+//		} catch (InterruptedException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//		cond.signal();
+		
 		new AAA();
 		List<User> users = new ArrayList<User>();
+		try {
+			users.wait();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		users.notify();
+		
 		users.add(new User(10, "a"));
 		users.add(new User(11, "d"));
 		users.add(new User(15, "s"));

@@ -1,5 +1,6 @@
 package JavaBasics;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
@@ -47,6 +48,18 @@ public class Java_List {
 		System.out.printf("2 a=%s, b=%s  \n", a.val, b.val);
 	}
 	public static void main(String[] args) {
+		ArrayList<Integer> list1 = new ArrayList<Integer>();
+		list1.add(null);
+		list1.add(null);
+		list1.add(null);
+		list1.add(null);
+		System.out.println(""+list1);
+		System.out.println(""+list1.size());
+		list1.add(null);
+		list1.add(null);
+		System.out.println(""+list1);
+		System.out.println(""+list1.size());
+
 		List<Integer> list = new LinkedList<Integer>();
 		list.add(1);
 		list.add(4);

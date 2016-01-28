@@ -12,6 +12,11 @@ import LeetCode.ArrayPrinter;
 
 public class Java_String {
 	public static void main(String[] args) {
+		Integer val = new Integer(12);
+		val.toString();
+//		val.lowestOneBit();
+		System.out.println(""+Integer.toBinaryString(val));
+		System.out.println(""+String.valueOf(43554));
 		String sd = "adfewww";
 		
 		StringBuilder sb = new StringBuilder();

@@ -10,6 +10,24 @@ import java.util.TreeSet;
 public class HadoopMapReduce {
 	
 	public static void main(String[] args) {
+		
+		int[] arr = {1,2,3,4};
+		int[][] matrix = new int[3][4];
+		matrix[0] = arr;
+		matrix[1] = arr;
+		matrix[2] = arr;
+		System.out.println(""+matrix[0][3]);
+		System.out.println(""+matrix[1][3]);
+		System.out.println(""+matrix[2][3]);
+		int rowLen = matrix.length;
+		int colLen = matrix[0].length;
+		for(int i = 0; i < rowLen; i++){
+			for(int j = 0; j < colLen; j++){
+				System.out.print(" "+matrix[i][j]);
+			}
+			System.out.println("");
+		}
+		
 		List<Posting> list1 = new LinkedList<Posting>();
 		list1.add(new Posting(2, 12));
 		list1.add(new Posting(13, 73));

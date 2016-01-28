@@ -1,6 +1,7 @@
 package JavaBasics;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 import org.junit.Test;
@@ -75,32 +76,68 @@ public class Java_PriorityQueue {
 		pq2.offer(8);
 		pq2.offer(8);
 		pq2.offer(9);
-		System.out.println(pq2.size());
+//		Collections.sort
+		System.out.println("size of pq2 is :"+pq2.size());
+		System.out.println(pq2);
+		System.out.println("Default order:");
 		while(pq2.size()>0){
 			System.out.print(" "+pq2.poll());
 		}
+		
 		System.out.println();
+		PriorityQueue<Integer> pq3 = new PriorityQueue<Integer>(3, new Comparator<Integer>(){
+
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				// TODO Auto-generated method stub
+				return o2 - o1;
+			}
+			
+		});
+		
+		pq3.offer(-3);
+		pq3.offer(-2);
+		pq3.offer(0);
+		pq3.offer(4);
+		pq3.offer(6);
+		pq3.offer(3);
+		pq3.offer(3);
+		pq3.offer(3);
+		pq3.offer(7);
+		pq3.offer(8);
+		pq3.offer(8);
+		pq3.offer(9);
+		System.out.println("size of pq3 is :"+pq3.size());
+//		System.out.println(pq2.size());
+		System.out.println("Default order:");
+		while(pq3.size()>0){
+			System.out.print(" "+pq3.poll());
+		}
+		System.out.println();
+
+//		pq3.
+		
 //		pq2.offer(10);
 
 //pq2.add(3);
 //pq2.offer(3);
-		System.out.println(pq2);	
-		Integer [] arr = pq2.toArray(new Integer[0]);
+		System.out.println(pq3);	
+		Integer [] arr = pq3.toArray(new Integer[0]);
 		Arrays.sort(arr);
 		System.out.println(Arrays.toString(arr));
-		System.out.println(pq2.size());
+		System.out.println(pq3.size());
 		for(Integer i : arr){
-			System.out.println(pq2.poll());	
-			System.out.println(pq2);
+			System.out.println(pq3.poll());	
+			System.out.println(pq3);
 		}
-		System.out.println(pq2.size());
-		System.out.println(pq2.poll() + " " + pq2.peek());
-		System.out.println(pq2);	
+		System.out.println(pq3.size());
+		System.out.println(pq3.poll() + " " + pq3.peek());
+		System.out.println(pq3);	
 
 		Integer i;
-		while ((i = (Integer) pq2.poll()) != null)
+		while ((i = (Integer) pq3.poll()) != null)
 			System.out.print(i + " ");
-		System.out.println(pq2);	
+		System.out.println(pq3);	
 
 	}
 	
