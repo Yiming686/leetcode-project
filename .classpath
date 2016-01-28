@@ -3,6 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="/Users/yiming/Downloads/super-csv-distribution-2.4.0-bin/super-csv/super-csv-2.4.0.jar" sourcepath="/Users/yiming/.m2/repository/net/sf/supercsv/super-csv/2.4.0/super-csv-2.4.0-sources.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SuperCSV"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
