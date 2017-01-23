@@ -1,6 +1,8 @@
 package Lintcode.BinaryTree;
 
+import java.util.AbstractSequentialList;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
 Flatten Binary Tree to Linked List Show result 
@@ -41,18 +43,21 @@ Medium Convert Sorted List to Balanced BST
  *
  */
 public class Flatten_Binary_Tree_to_Linked_List {
-
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		TreeNode root = TreeNode.fromStringToTree("{1,2,5,3,4,#,6}");
+        System.out.println(""+TreeNode.convertToString(root));
+		flatten(root);
+		
 	}
 
 	
-    public void flatten(TreeNode root) {
+    public static void flatten(TreeNode root) {
         flattenHelper(root);
     }
     
-    private TreeNode flattenHelper(TreeNode root) {
+    private static TreeNode flattenHelper(TreeNode root) {
         if (root == null) {
             return null;
         }

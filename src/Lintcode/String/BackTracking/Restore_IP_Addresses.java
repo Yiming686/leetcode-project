@@ -32,10 +32,11 @@ public class Restore_IP_Addresses {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		String  s = "25525511135";
+		System.out.println(""+restoreIpAddresses(s));
 	}
 
-    public ArrayList<String> restoreIpAddresses(String s) {
+    public static ArrayList<String> restoreIpAddresses(String s) {
         // Write your code here
         ArrayList<String> result = new ArrayList<String>();
         ArrayList<String> list = new ArrayList<String>();
@@ -47,8 +48,9 @@ public class Restore_IP_Addresses {
         return result;
     }
     
-    public void helper(ArrayList<String> result, ArrayList<String> list, String s, int start){
+    public static void helper(ArrayList<String> result, ArrayList<String> list, String s, int start){
         if(list.size() == 4){//如果已经找到四个ip了
+        	System.out.println(""+list);
             if(start != s.length())//如果已经找到了四个ip，但是start没有到最后，返回吧
                 return;
             StringBuffer sb = new StringBuffer();//否则，则可按照格式,加入,返回
@@ -64,6 +66,7 @@ public class Restore_IP_Addresses {
         //i一定要从start开始，不能跳跃，结束于start+2或者更大，更大没意义因为isValid()
         for(int i=start; i<s.length() && i<= start+2; i++){
             String tmp = s.substring(start, i+1);//取前1，前2，前3字符
+//            System.out.println("" + tmp);
             if(isValid(tmp)){
                 list.add(tmp);
                 helper(result, list, s, i+1);//下一次递归开始于i+1
@@ -83,7 +86,7 @@ public class Restore_IP_Addresses {
     }
     
     //巧妙去除连续0的情况,单0有效，多零无效，不等于0只要大于小于255即可
-    private boolean isValid(String s){
+    private static boolean isValid(String s){
         if(s.charAt(0) == '0')
             return s.equals("0"); // to eliminate cases like "00", "10"
         int digit = Integer.valueOf(s);

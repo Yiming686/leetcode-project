@@ -4,10 +4,10 @@ public class Permutation_Sequence {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		System.out.println(""+getPermutation(3,4));
 	}
 	//worked
-    public String getPermutation(int n, int k) {
+    public static String getPermutation(int n, int k) {
         StringBuilder sb = new StringBuilder();
         boolean[] used = new boolean[n];
 
@@ -16,7 +16,7 @@ public class Permutation_Sequence {
         for (int i = 1; i < n; i++) {
             factor *= i;
         }
-        //i是从左到右第几位置，j是从0到n-1第几个数字，所以factore会 不断缩小
+        //i是从左到右第几位置，j是从0到n-1第几个数字，所以factor会不断缩小
         for (int i = 0; i < n; i++) {
             int index = k / factor;//这是从0到n-1得index
             k = k % factor;//index指向bucket的次序

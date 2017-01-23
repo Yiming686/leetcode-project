@@ -3,8 +3,10 @@ package Lintcode.String.Palindrome;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import JavaInterviewQueston.Samsung_Interview.TreeNode;
 import Lintcode.Array.Matrix;
 
 /**
@@ -42,9 +44,47 @@ public class All_Unique_Sub_Palindrome {
 		// TODO Auto-generated method stub
 //		String str = "aabaa";
 		String str = "abacdbabefhiihg";
+//		String str = "bbbbbbbbbbbbbbb";
+
 		System.out.println(""+palindrome(str));
+		longestPalindrome(str);
 	}
-	
+    public static String longestPalindrome(String s) {
+		if (s == null || s.length() == 0)
+			return "";
+		boolean[][] isPal = new boolean[s.length()][s.length()];
+		int[][] arr = new int[s.length()][s.length()];
+
+		Set<String> set = new HashSet<String>();
+		List<String> list = new ArrayList<String>();
+
+		String result = "";
+		int maxLen = 0;
+		for (int i = s.length() - 1; i >= 0; i--) {
+			for (int j = i; j < s.length(); j++) {
+				if (s.charAt(i) == s.charAt(j) && (j - i <= 2 || isPal[i + 1][j - 1])) {
+					isPal[i][j] = true;
+					arr[i][j] = 1;
+					String subStr = s.substring(i, j + 1);
+					set.add(subStr);
+					list.add(subStr);
+					if (1==1) {
+					}
+
+					if (maxLen < j - i + 1) {
+						maxLen = j - i + 1;
+						result = s.substring(i, j + 1);
+					}
+				}
+			}
+		}
+		System.out.println("set:--> "+set.size());
+		System.out.println("list:--> "+list.size());
+		System.out.println(""+set);System.out.println(""+list);
+		System.out.println(""+s);
+		System.out.println(""+Matrix.fromMatrixToString(arr));
+		return result;
+	}
     //conkey: worked
 	public static int palindrome(String str) {
 		if (str == null || str.length() == 0) {

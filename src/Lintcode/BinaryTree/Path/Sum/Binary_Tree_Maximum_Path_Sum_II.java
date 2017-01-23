@@ -28,16 +28,29 @@ Medium Binary Tree Maximum Path Sum
  */
 public class Binary_Tree_Maximum_Path_Sum_II {
 
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String TreeNodeStrIn ="{1,2,8,#,#,-5,-2}";
+//		String TreeNodeStrIn ="{1,9,8}";
+
+		TreeNode root = TreeNode.fromStringToTree(TreeNodeStrIn);
+		System.out.println(""+maxPathSum2(root));
+
+	}
+	
+	//从root找最大和，可能结束在任意节点，遇到null返回0，叶子节点就是其本身值
+	//worked，分治法
     public static int maxPathSum2(TreeNode root) {
         // Write your code here
         if(root == null) return 0;
-        int left = maxPathSum2(root.left);
-        int right = maxPathSum2(root.right);
-        return left > right ? left + root.val: right + root.val;
+        int leftMaxPathSum  = maxPathSum2(root.left);
+        int rightMaxPathSum = maxPathSum2(root.right);
+        //正确并且简洁
+        return Math.max(0, Math.max(leftMaxPathSum,rightMaxPathSum)) + root.val;
+//        正确的计算，但是复杂啰嗦
+//        return Math.max(leftMaxPathSum, 0) > Math.max(rightMaxPathSum, 0) ? Math.max(leftMaxPathSum, 0) + root.val: Math.max(rightMaxPathSum, 0) + root.val;
+        //错误的计算
+//        return leftMaxPathSum > rightMaxPathSum ? leftMaxPathSum + root.val: rightMaxPathSum + root.val;
     }
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

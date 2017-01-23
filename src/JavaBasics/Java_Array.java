@@ -1,5 +1,6 @@
 package JavaBasics;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -15,8 +16,26 @@ public class Java_Array {
 //    }
 	public static void main(String[] args) {
 //		findString("11111","222222");
-		int[] intArray = { 1, 2, 3, 4, 5 };
-		int[] intArray2 = { 6, 7, 8, 9, 10 };
+		int[] intArray = { 0, 1,1, 2,1,1, 10 };
+		int[] intArray2 = { 1,1, 2, 3, 4, 5 };
+		List<Integer> comm = new ArrayList<Integer>();
+		for(int i =0, j=0; i<intArray.length && j < intArray2.length;){
+			int val1 = intArray[i];
+			int val2 = intArray2[j];
+			if(val1 == val2){
+				comm.add(val1);
+				i++;
+				j++;
+			}else if(val1 < val2){
+				i++;
+			}else{
+				j++;
+			}
+		}
+		System.out.println(""+comm);
+        if( 1 == 1)return;
+
+		
 		// Apache Commons Lang library
 //		int[] combinedIntArray = (intArray, intArray2);
 		Map<String, int[]> map = new HashMap<String, int[]>();

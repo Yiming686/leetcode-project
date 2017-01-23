@@ -15,6 +15,9 @@ can go right and go down
 [ row:col  3 : 0-5 ] [ 7,  6,  6,  7,  9, ]
 [ row:col  4 : 0-5 ] [ 8,  7,  2,  7,  8, ]
 
+[[3, 0, 4, 7, 6, 6, 7, 9, 8]]
+ [3, 0, 4, 7, 6, 6, 7, 9, 8]
+
 [
 [3, 2, 1, 0, 6, 5, 3, 9, 8], 
 [3, 2, 1, 0, 2, 5, 3, 9, 8], 
@@ -92,33 +95,14 @@ class Point{
 	
 }
 public class Find_Max_Gift {
-	public static void f(List<Integer> result, int val, Integer val2, Point p){
-		result.add(5);
-		val++;
-		val2++;
-		p.setX(7);
-		p.setY(9);
-	}
+//	public static void f(List<Integer> result, Integer val, Integer val2, Point p){
+//		result.add(5);
+//		val++;
+//		val2++;
+//		p.setX(7);
+//		p.setY(9);
+//	}
 	public static void main(String[] args) {
-		Integer a = 456;
-		Integer b = 456;
-		Integer c = 1000;
-		Integer d = 1000;
-		System.out.println(a == b);
-		System.out.println(a.equals(b));
-		System.out.println(c == d);
-		System.out.println(c.equals(d));
-		
-		List<Integer> result = new ArrayList<Integer>();
-		result.add(4);
-		int val = 8;
-		Integer val2 = new Integer(3);
-		Point p = new Point(3,4);
-		f(result, val, val2, p);
-		System.out.println(""+result);
-		System.out.println(""+val);
-		System.out.println(""+val2);
-		System.out.println(""+p.getX() + " "+p.getY());
 		// TODO Auto-generated method stub
 //		Random r= new Random();
 //		System.out.println(""+r.nextInt(10)+","+r.nextInt(10)+","+r.nextInt(10)+","+r.nextInt(10)+","+r.nextInt(10));
@@ -137,7 +121,7 @@ public class Find_Max_Gift {
 				{8,7,2,7,8},
 				};
 		System.out.println(""+Matrix.fromMatrixToString(matrix));
-		System.out.println(""+Matrix.fromMatrixToString(matrix2));
+//		System.out.println(""+Matrix.fromMatrixToString(matrix2));
 
 //		System.out.println(""+findMaxGift02(matrix));
 //		System.out.println(""+findMaxGift1(matrix));
@@ -147,6 +131,8 @@ public class Find_Max_Gift {
 //		printAllPossiblePaths(matrix2);
 //		findMaxPath(matrix);
 //		findMaxPath(matrix2);
+//		findMaxGift01(matrix);
+		findMaxGift03(matrix);
 	}
 	//===printAllPossiblePaths=================================================================================================================
 	//can only go right or down
@@ -164,7 +150,7 @@ public class Find_Max_Gift {
 	private static void printAllPossiblePaths(List<List<Integer>> result, List<Integer> path, int[][] matrix, int row1,
 			int col1, int row2, int col2) {
 		// TODO Auto-generated method stub
-		if(row1 < 0 || row1 > row2 || col1 < 0 || col1 > col2) return;
+//		if(row1 < 0 || row1 > row2 || col1 < 0 || col1 > col2) return;
 		if(row1 == row2 && col1 == col2){
 			result.add(new ArrayList<Integer>(path));
 			return;
@@ -481,5 +467,67 @@ public class Find_Max_Gift {
 		return matrix[len-1][len-1];
 	}
 
+	private static int findMaxGift03(int[][] matrix){
+		int len = matrix.length;
+		int[][] max = new int[len][len];
+		max[0][0] = matrix[0][0];
+		List<Integer>[][] max2 = new ArrayList[len][len];
+		max2[0][0] = new ArrayList<Integer>();
+		max2[0][0].add(matrix[0][0]);
+
+		for(int j = 1; j< len; j++){
+			max[0][j] = matrix[0][j] + max[0][j-1] ;
+			max2[0][j] = new ArrayList<Integer>();
+			max2[0][j].addAll(max2[0][j-1]);
+			max2[0][j].add(matrix[0][j]);
+		}
+		for(int i = 1; i< len; i++){
+			max[i][0] = max[i-1][0] + matrix[i][0];
+			max2[i][0] = new ArrayList<Integer>();
+			max2[i][0].addAll(max2[i-1][0]);
+			max2[i][0].add(matrix[i][0]);
+
+		}
+		
+		for(int i = 1; i< len; i++){
+			for(int j = 1; j< len; j++){
+				max2[i][j] = new ArrayList<Integer>();
+				if(max[i-1][j] > max[i][j-1]){
+					max[i][j] = max[i-1][j] + matrix[i][j];
+					max2[i][j].addAll(max2[i-1][j]);
+					max2[i][j].add(matrix[i][j]);
+				}else{
+					max[i][j] = max[i][j-1] + matrix[i][j];
+					max2[i][j].addAll(max2[i][j-1]);
+					max2[i][j].add(matrix[i][j]);
+				}
+//				max[i][j] = Math.max(max[i-1][j], max[i][j-1]) + matrix[i][j];
+				System.out.println(""+Matrix.fromMatrixToString(max));
+			}
+		}
+		System.out.println(""+max2[len-1][len-1]);
+		return max[len-1][len-1];
+	}
+
+	//no extra memory, better
+	private static int findMaxGift022(int[][] matrix){
+		int len = matrix.length;
+		for(int j = 1; j< len; j++){
+			matrix[0][j] += matrix[0][j-1];
+		}
+		for(int i = 1; i< len; i++){
+			matrix[i][0] += matrix[i-1][0];
+		}
+		List<Integer> maxList = new ArrayList<Integer>();
+		maxList.add(matrix[0][0]);
+		for(int i = 1; i< len; i++){
+			for(int j = 1; j< len; j++){
+				matrix[i][j] += Math.max(matrix[i-1][j], matrix[i][j-1]);
+				
+				System.out.println(""+Matrix.fromMatrixToString(matrix));
+			}
+		}
+		return matrix[len-1][len-1];
+	}
 
 }

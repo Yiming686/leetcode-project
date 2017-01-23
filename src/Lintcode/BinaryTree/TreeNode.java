@@ -3,10 +3,10 @@ package Lintcode.BinaryTree;
 import java.util.ArrayList;
 
 public class TreeNode {
-	int val;
-	int liss;
-	TreeNode left;
-	TreeNode right;
+	public int val;
+//	int liss;
+	public TreeNode left;
+	public TreeNode right;
 	public TreeNode(int val) {
 		super();
 		this.val = val;
@@ -51,7 +51,7 @@ public class TreeNode {
     }
 
 //    public static String serialize(TreeNode root) {
-    public static String fromTreeToString(TreeNode root) {
+    public static String convertToString(TreeNode root) {
         if (root == null) {
             return "{}";
         }

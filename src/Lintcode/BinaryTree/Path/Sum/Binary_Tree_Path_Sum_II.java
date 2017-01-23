@@ -20,8 +20,7 @@ public class Binary_Tree_Path_Sum_II {
 //		}
 		int max = 66;
 		while(max>0){
-			if(findSum(root, max))
-				System.out.printf("sum=%s, Result=%s\n", max, findSum(root, max));
+			findSum(root, max);
 			max--;
 		}
 		
@@ -70,15 +69,17 @@ public class Binary_Tree_Path_Sum_II {
 	private static boolean findSum(TreeNode root, int sum){
 	    if(root == null) return false;
 	    int target = sum;
-    	return findSum(root.right, root.val, target);
+    	boolean result = findSum(root, root.val, target);
+    	if(result)
+    	System.out.printf("result=%s, Target=%s\n", result, target);
+    	return result;
 	}
 	private static boolean findSum(TreeNode root, int sum, int target){
 	    if(root == null) return false;
-	    if(root.left == null && root.right == null && sum == root.val) return true;
-	    boolean left  = findSum(root.left,  sum + root.val, target); 
-    	boolean right = findSum(root.right, sum + root.val, target);
-	    if(left == true || right == true) return true;
-	    return false;
+	    if(root.left == null && root.right == null && sum == target) return true;
+	    boolean left  = findSum(root.left,  sum + root.left.val, target); 
+    	boolean right = findSum(root.right, sum + root.right.val, target);
+	    return left || right;
 	}
 
 }

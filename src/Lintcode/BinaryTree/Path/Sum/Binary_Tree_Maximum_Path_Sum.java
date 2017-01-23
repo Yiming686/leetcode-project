@@ -69,14 +69,15 @@ public class Binary_Tree_Maximum_Path_Sum {
     //worked,singlePath含义不好理解，此值大于等于0
     private Result helper2(TreeNode root) {
         if(root == null){ return new Result(0, Integer.MIN_VALUE);}
-        Result left = helper(root.left);
-        Result right = helper(root.right);
+        Result leftResult  = helper(root.left);
+        Result rightResult = helper(root.right);
+
+        int singlePath = Math.max(0, Math.max(leftResult.singlePath, rightResult.singlePath)) + root.val ;
+//        int singlePath = Math.max(leftResult.singlePath + root.val, rightResult.singlePath + root.val) ;
+//        singlePath = Math.max(singlePath, 0);
         
-        int singlePath = Math.max(left.singlePath + root.val, right.singlePath + root.val) ;
-        singlePath = Math.max(singlePath, 0);
-        
-        int maxPath = Math.max(left.maxPath, right.maxPath);
-        maxPath = Math.max(maxPath, left.singlePath + root.val + right.singlePath);
+        int maxPath = Math.max(leftResult.maxPath, rightResult.maxPath);
+        maxPath = Math.max(maxPath, leftResult.singlePath + root.val + rightResult.singlePath);
         
         return new Result(singlePath, maxPath);
     }

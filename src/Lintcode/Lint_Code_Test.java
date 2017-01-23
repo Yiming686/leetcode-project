@@ -19,9 +19,9 @@ public class Lint_Code_Test {
 //		String[] strs = {"123","123"};
 //		List<String> list = anagrams(strs);
 //		System.out.println(""+list.size());
-//		int[] candidates =  {8,7,4,3};
-//		int target = 11;
-//		System.out.println("result: "+combinationSum(candidates, target));
+		int[] candidates =  {8,7,4,3};
+		int target = 11;
+		System.out.println("result: "+combinationSum(candidates, target));
 	}
 
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {

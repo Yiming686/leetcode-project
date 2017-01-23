@@ -16,7 +16,18 @@ public class Java_LinkedList {
 		LinkedList<Integer> intList = new LinkedList<Integer>();
 		for(int i : intArr){
 			intList.add(i);
+//			intList.remove(new Integer(i));
 		}
+		System.out.println(""+intList);
+		intList.remove(3);
+		System.out.println(""+intList);
+		intList.remove(new Integer(3));
+		System.out.println(""+intList);
+		intList.remove(new Integer(2));
+		System.out.println(""+intList);
+
+		System.out.println("========");
+		
     	List<List<Integer>> ll = new LinkedList<List<Integer>>();
 		ll.add(intList);
 		LinkedList<Integer> intList2 = new LinkedList<Integer>();

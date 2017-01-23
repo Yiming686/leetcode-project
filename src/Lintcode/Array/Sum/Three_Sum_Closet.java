@@ -8,14 +8,15 @@ public class Three_Sum_Closet {
 		// TODO Auto-generated method stub
 
 	}
-	
+	//思路：得排序吧？否则不好逐步来找最近的和
+	//把所有的遍历完毕找出最下的	
+	//核心三步逻辑：定义一个最近和，在循环中更新，退出循环后，返回最近和
+    //worked, perfect implementation
     public int threeSumClosest(int[] nums, int target) {
         if(nums == null || nums.length < 3) return Integer.MAX_VALUE;
         Arrays.sort(nums);
         int len = nums.length;
-        int closestDiff = Integer.MAX_VALUE;//
-        boolean isFirst = true;
-        int closestSum = 0;//
+        int closestSum = nums[0] + nums[1] + nums[len-1];//最近的三数和
         for(int i = 0; i+2 < len; i++){
             if (i != 0 && nums[i] == nums[i - 1]) {
 				continue; 
@@ -31,12 +32,8 @@ public class Three_Sum_Closet {
                 }else{
                     right--;
                 }
-                if(isFirst) {
-                    closestSum = sum;
-                    isFirst = false;
-                }
-                if(  Math.abs(sum-target) < closestDiff){
-                    closestDiff = Math.abs(sum-target);
+                //核心逻辑：新的三数和比旧三数和距离target更近，替换之
+                if(Math.abs(sum-target) < Math.abs(closestSum - target)){
                     closestSum = sum;        
                 }
             }

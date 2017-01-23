@@ -33,10 +33,10 @@ public class LC_127_Word_Ladder {
 		dict.add(start);
 		dict.add(end);
 		
-		HashSet<String> set = new HashSet<String>();
+		HashSet<String> visitedWordSet = new HashSet<String>();
 		Queue<String> queue = new LinkedList<String>();
 		queue.offer(start);
-		set.add(start);
+		visitedWordSet.add(start);
 
 		int minLen = 1;
 
@@ -55,14 +55,16 @@ public class LC_127_Word_Ladder {
 					if (nextWord.equals(end)) {
 						return minLen;
 					}
-					if (set.contains(nextWord)) {
+					if (visitedWordSet.contains(nextWord)) {
 						continue;
 					}
-					set.add(nextWord);
+					visitedWordSet.add(nextWord);
+					System.out.println(""+visitedWordSet);
 					queue.offer(nextWord);
 				}
 			}
 		}
+//		System.out.println(""+set);
 		return 0;
 	}
 
@@ -72,12 +74,12 @@ public class LC_127_Word_Ladder {
 	// 一定必须在字典里面
 	private static ArrayList<String> getNextWords(String word, Set<String> dict) {
 		ArrayList<String> nextWords = new ArrayList<String>();
-		for (char c = 'a'; c <= 'z'; c++) {
+		for (char ch = 'a'; ch <= 'z'; ch++) {
 			for (int i = 0; i < word.length(); i++) {
-				if (c == word.charAt(i)) {
+				if (ch == word.charAt(i)) {
 					continue;
 				}
-				String nextWord = replace(word, i, c);
+				String nextWord = replace(word, i, ch);
 				if (dict.contains(nextWord)) {
 					nextWords.add(nextWord);
 				}
@@ -89,9 +91,9 @@ public class LC_127_Word_Ladder {
 
 	// replace character of a string at given index to a given character
 	// return a new string
-	private static String replace(String s, int index, char c) {
+	private static String replace(String s, int index, char ch) {
 		char[] arr = s.toCharArray();
-		arr[index] = c;
+		arr[index] = ch;
 		return new String(arr);
 	}
 

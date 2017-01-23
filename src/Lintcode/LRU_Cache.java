@@ -11,13 +11,13 @@ import java.util.HashMap;
  */
 
 public class LRU_Cache {
-    private class Node{
-        Node prev;
-        Node next;
-        int key;
-        int value;
+    private class Node<K,V>{
+        Node<K, V> prev;
+        Node<K, V> next;
+        K key;
+        V value;
 
-        public Node(int key, int value) {
+        public Node(K key, V value) {
             this.key = key;
             this.value = value;
             this.prev = null;
@@ -25,10 +25,14 @@ public class LRU_Cache {
         }
     }
 
+
     private int capacity;
-    private HashMap<Integer, Node> hs = new HashMap<Integer, Node>();
-    private Node head = new Node(-1, -1);
-    private Node tail = new Node(-1, -1);
+    private HashMap<Integer, Node<Integer, Integer>> hs = new HashMap<>();
+    private Node<Integer, Integer> head = new Node<>(-1, -1);
+    private Node<Integer, Integer> tail = new Node<>(-1, -1);
+//    private HashMap<Integer, Node> hs = new HashMap<Integer, Node>();
+//    private Node head = new Node(-1, -1);
+//    private Node tail = new Node(-1, -1);
 
     public LRU_Cache(int capacity) {
         this.capacity = capacity;
@@ -75,4 +79,16 @@ public class LRU_Cache {
         current.prev.next = current;
         current.next = tail;
     }
+    private void move_to_tail2(Node current) {
+    	tail.prev.next = current;
+        current.prev = tail.prev;
+        current.next = tail;
+        tail.prev = current;
+    }
+    
+    
+    
+    
+    
+    
 }

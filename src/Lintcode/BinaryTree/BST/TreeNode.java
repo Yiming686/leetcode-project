@@ -23,7 +23,7 @@ public class TreeNode {
         String[] vals = data.substring(1, data.length() - 1).split(",");
         ArrayList<TreeNode> list = new ArrayList<TreeNode>();
         
-        TreeNode root = new TreeNode(Integer.valueOf(vals[0]));
+        TreeNode root = new TreeNode(Integer.valueOf(vals[0].trim()));
         list.add(root);
         int index = 0;
         boolean isLeftChild = true;
@@ -33,7 +33,7 @@ public class TreeNode {
         for (int i = 1; i < vals.length; i++) {
             // index = (i-1)/2;
             if (!vals[i].equals("#")) {
-                TreeNode node = new TreeNode(Integer.parseInt(vals[i]));
+                TreeNode node = new TreeNode(Integer.parseInt(vals[i].trim()));
                 if (isLeftChild) {
                     list.get(index).left = node;
                 } else {

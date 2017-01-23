@@ -27,6 +27,7 @@ public class Java_String2 {
     }
     
     public static boolean isPalindrome(String s){
+
         if(s == null) return false;
         int len = s.length();
         if(len == 0) return true;
@@ -47,6 +48,24 @@ public class Java_String2 {
     }
     
 	public static void main(String[] args) {
+		String s3 = "";
+		System.out.println(""+s3.length());
+		System.out.println(""+s3.charAt(0));
+    	String[] arr = new String[5];
+    	System.out.println("arr3: "+arr[3]);
+    	System.out.println("arr3: "+arr.length);
+        if (arr == null || arr.length == 0) {
+        	System.out.println("arr3: NULL or 0");
+        }
+        
+        String prefix = arr[0];
+        if(prefix == null)         	System.out.println("arr3: prefix == null");
+
+        
+        String s2 = "uldk";
+        System.out.println("s2:"+s2.substring(0, 1));
+        if( 1 == 1)return;
+        
 		// TODO Auto-generated method stub
 		String s = "er";
 //		String s1 = s.substring(-3, 2);

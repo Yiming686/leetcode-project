@@ -4,6 +4,8 @@ package Lintcode.Array.String.DP;
 
 Backpack II
 
+Problem 单次选择+最大价值
+
 Given n items with size Ai and value Vi, and a backpack with size m. What's the maximum value can you put into the backpack?
 
 Have you met this question in a real interview? Yes
@@ -32,7 +34,7 @@ public class Backpack_II {
 		// TODO Auto-generated method stub
 
 	}
-//	首先定义状�?? K(i,w) 为前 i 个物品放入size�? w 的背包中�?获得的最大价值，则相应的状�?�转移方程为�? K(i,w)=max{K(i�?1,w),K(i�?1,w−w​i​�??)+v​i​�?�}
+//	首先定义状�?? K(i,w) 为前 i 个物品放入size�? w 的背包中�?获得的最大价值，则相应的状�?�转移方程为�? K(i,w)=max{K(i�?1,w),K(i�?1,w−w​i​�??)+v​i​�?�}
 	//First Best Solution, worked,TC is O(n x m), SC is O(m)
     public int backPackII(int m, int[] A,  int V[]) {  
         if (A.length==0) return 0;  
@@ -42,8 +44,8 @@ public class Backpack_II {
         for (int i=1;i<=len;i++)  
             // for (int j=0;j<=m;j++){  
             for (int j=m;j>=0;j--){  
-                //如果袋子够大，可以装得下A[i-1], 则装入并计算其最大�??
-                //求最大�?�就是要比较：不装入的最大�?�和装入后的值中的大�?
+                //如果袋子够大，可以装得下A[i-1], 则装入并计算其最大�??
+                //求最大�?�就是要比较：不装入的最大�?�和装入后的值中的大�?
 	            if (j - A[i-1] >= 0) {
 	                maxVal[j] = Math.max(maxVal[j], maxVal[j-A[i-1]]+V[i-1]);
 	            }

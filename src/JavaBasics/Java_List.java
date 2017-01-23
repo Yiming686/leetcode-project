@@ -1,5 +1,6 @@
 package JavaBasics;
 
+import java.nio.DoubleBuffer;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,7 +33,8 @@ public class Java_List {
 	}
 	public static void f(AB a, AB b, AB c){
 		Stack<Integer> s = new Stack<Integer>();
-		s.clear(); s.peek();
+		s.clear(); 
+//		s.peek();
 //		Arrays.sort(new int[7]);
 		
 		b  = new AB(5);
@@ -48,6 +50,23 @@ public class Java_List {
 		System.out.printf("2 a=%s, b=%s  \n", a.val, b.val);
 	}
 	public static void main(String[] args) {
+		double d = 12.2/0;
+		System.out.println(""+d);
+		ArrayList<Integer> list3 = new ArrayList<Integer>();
+		list3.add(5);list3.add(1);list3.add(2);list3.add(2);list3.add(3);list3.add(3);list3.add(3);
+		list3.add(6);list3.add(1);list3.add(2);
+		ArrayList<Integer> list4 = new ArrayList<Integer>();
+		list4.add(8);list4.add(1);list4.add(2);list4.add(2);list4.add(3);list4.add(3);list4.add(3);
+		list4.add(9);list4.add(3);list4.add(3);
+		System.out.println(""+list3);
+		System.out.println(""+list4);
+		System.out.println(""+list3.retainAll(list4));
+		System.out.println(""+list3);
+		System.out.println(""+list4);
+
+
+        if( 1 == 1)return;
+
 		ArrayList<Integer> list1 = new ArrayList<Integer>();
 		list1.add(null);
 		list1.add(null);

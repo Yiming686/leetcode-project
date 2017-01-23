@@ -32,6 +32,29 @@ public class Longest_Palindromic_Substring {
 		longestPalindrome2(s);
 	}
 
+    //DP, TC is O(N^2)
+//	第一个解决方案
+    public static String longestPalindrome11(String s) {
+		if (s == null) return null;
+		int len = s.length();
+		if(len == 0) return "";
+		boolean[][] isPal = new boolean[len][len];
+		String result = "";
+		int maxLen = 0;
+		for (int i = len - 1; i >= 0; i--) {
+			for (int j = i; j < len; j++) {
+				if (s.charAt(i) == s.charAt(j) && (j - i <= 2 || isPal[i + 1][j - 1])) {
+					isPal[i][j] = true;
+					
+					if (maxLen < j - i + 1) {
+						maxLen = j - i + 1;
+						result = s.substring(i, j + 1);
+					}
+				}
+			}
+		}
+		return result;
+	}
 	
 	
 	//for test
@@ -103,4 +126,6 @@ public class Longest_Palindromic_Substring {
         else 
             return s.charAt(i / 2);
     }
+    
+    
 }

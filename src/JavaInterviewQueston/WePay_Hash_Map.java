@@ -1,6 +1,8 @@
 package JavaInterviewQueston;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -125,7 +127,8 @@ class MyHashMap2<K, V> {
 	final int hash(Object k) {
 		int h = hashSeed;
 		if (0 != h && k instanceof String) {
-			return sun.misc.Hashing.stringHash32((String) k);
+			return 88888888;
+//			return HashMap.((String) k);
 		}
 
 		h ^= k.hashCode();

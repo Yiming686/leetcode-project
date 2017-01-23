@@ -7,6 +7,10 @@ public class Previous_Permutation {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //System.arraycopy(src, srcPos, dest, destPos, length);;
+		ArrayList<Integer> num = new ArrayList<Integer>();
+		num.add(1);num.add(3);num.add(2);num.add(4);
+		System.out.println(""+previousPermuation(num));
+		
 	}
 
     public static ArrayList<Integer> previousPermuation(ArrayList<Integer> num) {
@@ -29,6 +33,7 @@ public class Previous_Permutation {
                 return num;
             }
         }
+        System.out.println("d: "+num);
 		reverse(num, 0, len-1);
 		return num;
     }

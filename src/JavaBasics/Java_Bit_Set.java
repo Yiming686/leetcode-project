@@ -4,12 +4,22 @@ import java.util.Arrays;
 import java.util.BitSet;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Stack;
 
 public class Java_Bit_Set {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		LinkedList<Integer> stack = new LinkedList<Integer>();
+		stack.peek();
+		stack.peek();
+		stack.peek();
+		Stack<Integer> stack2 = new Stack<Integer>();
+		stack2.peek();
+		stack2.peek();
+		stack2.peek();
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         String [] arr = { "32","4", "8", "202", "20", "23"};
         		System.out.println(""+Arrays.toString(arr));

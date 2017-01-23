@@ -31,25 +31,27 @@ public class Longest_Substring_Without_Repeating_Characters {
 	}
 
 	// TC is O(n)
-    public static int lengthOfLongestSubstring(String s) {
-        if (s == null || s.length() == 0) {
+    public static int lengthOfLongestSubstring(String str) {
+        if (str == null || str.length() == 0) {
             return 0;
         }
         int max = 0;
         HashSet<Character> set = new HashSet<Character>();
-        int slow = 0; 
-        for (int fast = 0; fast < s.length(); fast++) {
-            char ch = s.charAt(fast);
-            if (set.contains(ch)) {
-                while (s.charAt(slow) != ch) {
-                    set.remove(s.charAt(slow));
-                    slow ++;
+        int left = 0; 
+        for (int right = 0; right < str.length(); right++) {
+            char rightChar = str.charAt(right);
+            if (set.contains(rightChar)) {
+            	char leftChar = str.charAt(left);
+                while (leftChar != rightChar) {
+                    set.remove(leftChar);
+                    left ++;
+                    leftChar = str.charAt(left);
                 }
-                slow ++;
+                left ++;
             } else {
-                set.add(s.charAt(fast));
+                set.add(rightChar);
             }
-            max = Math.max(max, fast - slow + 1);
+            max = Math.max(max, right - left + 1);
         }
         return max;
     }

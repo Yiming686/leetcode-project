@@ -1,5 +1,7 @@
 package Lintcode.Array;
 
+import Lintcode.SubA;
+
 /**
 Best Time to Buy and Sell Stock II
 
@@ -26,6 +28,13 @@ public class Best_Time_to_Buy_and_Sell_Stock_II {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		SubA subA = new SubA();
+//		int temp = subB.subB_private;
+//		int temp1 = subB.subB_default;
+//		int temp2 = subB.subB_protected;
+		
+		int temp3 = subA.supperA_public;
+//		int temp4 = subB.supperA_protected;
 
 	}
 	

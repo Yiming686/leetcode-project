@@ -2,6 +2,7 @@ package Lintcode.BinaryTree;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Stack;
 
 /**
 Binary Tree Level Order Traversal
@@ -60,7 +61,9 @@ public class Binary_Tree_Level_Order_Traversal {
     }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Stack<Integer> stack = new Stack<>();
+		stack.get(0);
+		stack.set(1, 4);
 	}
 
 }

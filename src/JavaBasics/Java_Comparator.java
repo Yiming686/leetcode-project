@@ -22,7 +22,7 @@ public class Java_Comparator {
 //		}
 //		cond.signal();
 		
-		new AAA();
+		new SupperA();
 		List<User> users = new ArrayList<User>();
 		try {
 			users.wait();
