@@ -46,7 +46,7 @@ public class Number_of_Islands {
 //				{false, false, false, false, false},
 //				{false, false, false, false, false} };
 		System.out.println("before:\n"+Matrix.fromMatrixToString(matrix));
-		int num = numIslands(matrix);
+		int num = numIslands15(matrix);
 		System.out.println(""+num);
 		System.out.println("after:\n"+Matrix.fromMatrixToString(matrix));
 		System.out.println(""+num);
@@ -75,7 +75,9 @@ public class Number_of_Islands {
         // if(grid == null)  return;
         //遍历规则：下面三行给所有递归点制定了规则三条，也是三条basecases
         if (i < 0 || i>= grid.length || j < 0 || j >= grid[0].length) return;
+        //if 0 or removed, return, 不在继续基于此点上下左右搜寻
         if(grid[i][j] == false) return; 
+        // if not, remove and 继续基于此点上下左右搜寻 
         if(grid[i][j] == true)  grid[i][j] = false; 
         
         removeIsLands22(grid, i+1, j  );
@@ -103,13 +105,12 @@ public class Number_of_Islands {
         }
         return count;        
     }
-
     private static void removeIsLands(int[][] grid, int i, int j){
         // if(grid == null)  return;
         //遍历规则：下面三行给所有递归点制定了规则三条，也是三条basecases
         if (i < 0 || i>= grid.length || j < 0 || j >= grid[0].length) return;
-        if(grid[i][j] == 0) return; 
-        if(grid[i][j] == 1)  grid[i][j] = 0; 
+        if(grid[i][j] == 0) return; //if 0 or removed, return, 不在继续基于此点上下左右搜寻
+        if(grid[i][j] == 1)  grid[i][j] = 0; // if not, remove and 继续基于此点上下左右搜寻 
         
         removeIsLands(grid, i+1, j  );
         removeIsLands(grid, i,   j+1);
@@ -161,5 +162,49 @@ public class Number_of_Islands {
 //        grid[i][j] = 1;
         
     }
+    
+//    为了计算最大的联通岛屿的面积，或者岛屿的总面积
+    public static int numIslands15(int[][] grid) {
+        // Write your code here
+        if(grid == null || grid.length == 0) return 0;
+        int rowLen = grid.length;
+        int colLen = grid[0].length;
+        
+        int count = 0;
+        int[] size = new int[1];
+        int maxSize = 0;
+        for(int i = 0; i < rowLen; i++){
+            for(int j = 0; j < colLen; j++){
+                if(grid[i][j] == 1){
+                    count++;
+                    removeIsLands15(grid, i, j, size);
+                    System.out.println("Curr size: "+size[0]);
+                    maxSize = Math.max(maxSize, size[0]);
+                    size[0] = 0;
+//                    grid[i][j] = 1;
+                    // grid[i][j] = true;
+                }
+            }
+        }
+        System.out.println("Max Size: "+maxSize);
+        return count;        
+    }
+    private static int size = 0;
+    private static void removeIsLands15(int[][] grid, int i, int j, int[] size){
+        // if(grid == null)  return;
+        //遍历规则：下面三行给所有递归点制定了规则三条，也是三条basecases
+        if (i < 0 || i>= grid.length || j < 0 || j >= grid[0].length) return;
+        if(grid[i][j] == 0) return; //已经遍历过，直接返回
+        if(grid[i][j] == 1)  grid[i][j] = 0; //标记遍历过
+        ++size[0];
+//        System.out.println(""+ (++size[0]));
+        
+        removeIsLands15(grid, i+1, j  , size);
+        removeIsLands15(grid, i,   j+1, size);
+        removeIsLands15(grid, i-1, j  , size);
+        removeIsLands15(grid, i,   j-1, size);
+        grid[i][j] = 1;
+    }
+
 
 }

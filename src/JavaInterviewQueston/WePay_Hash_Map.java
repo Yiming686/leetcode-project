@@ -17,11 +17,22 @@ public class WePay_Hash_Map {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		MyHashMap2<String, String> m = new MyHashMap2<String, String>();
+		
+		MyHashMap2<String, String> map = new MyHashMap2<String, String>();
+		map.put(null, null);
+		map.put(null, null);
+		map.put(null, null);
+		System.out.println(""+map.get(null));
 		myHashTable<String, String> m = new myHashTable<String, String>(100);
 		
 		m.put("abc", "eee");
 		m.put("abc", "bbb");
 		System.out.println(m.get("abc"));
+		m.put(null, null);
+		System.out.println(m.get(null));
+//		m.put(null, null);
+//		System.out.println(m.get(null));
+		
 	}
 
 }
@@ -266,9 +277,12 @@ class myHashTable<K, V> {
 		}
 	}
 
+
 	public void put(K key, V value) {
-		if (key == null)
-			throw new NullPointerException("null of key is not allowed");
+		if (key == null ){
+		}
+			
+//			throw new NullPointerException("null of key is not allowed");
 		if (ary.get(key.hashCode() % size) == null)
 			ary.add(key.hashCode() % size, new LinkedList<Entry<K, V>>());
 		ary.get(key.hashCode() % size).add(new Entry<K, V>(key, value));

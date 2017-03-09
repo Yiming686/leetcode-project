@@ -40,11 +40,17 @@ public class Two_Sum {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		int[] arr = new int[]{2, 7, 11, 88,4,7,5,4,15};
+		System.out.println(""+Arrays.toString(twoSum(arr, 9)));
+		System.out.println(""+checkTwoSum(arr, 9));
 	}
 
+	public static boolean checkTwoSum(int[] arr, int target){
+		
+		return false;
+	}
     // Best solution, O(n) Space, O(n) Time
-    public int[] twoSum(int[] numbers, int target) {  
+    public static int[] twoSum(int[] numbers, int target) {  
        // a map that maps integer to its index  
        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();  
        int[] indexes = new int[2];  
@@ -53,7 +59,10 @@ public class Two_Sum {
             //  if (map.get(x) != null) {  
             if (map.containsKey(x)) {  
                 indexes[0] = map.get(x) + 1;  
-                indexes[1] = i + 1;  
+                indexes[1] = i + 1;
+                System.out.println(""+indexes[0]+","+indexes[1]);
+                return indexes;
+//                map.put(numbers[i], i);  
             } else {  
                 map.put(numbers[i], i);  
             }  

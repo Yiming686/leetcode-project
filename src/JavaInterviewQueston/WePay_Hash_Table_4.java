@@ -73,9 +73,9 @@ class MyHashTable4<K, V> {
 
 	
 	public synchronized V put(K key, V value){
-        if (key == null) {
-            throw new NullPointerException("Key can not be null!");
-        }
+//        if (key == null) {
+//            throw new NullPointerException("Key can not be null!");
+//        }
         if ( value == null) {
             throw new NullPointerException("Value can not be null!");
         }

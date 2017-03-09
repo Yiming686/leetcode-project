@@ -166,4 +166,30 @@ public class Search_Insert_Position {
 	}
 
 
+    public static int searchLastInsertPos(int[] nums, int num) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        if(num < nums[0]) return 0;
+        if(num > nums[nums.length-1]) return nums.length;
+        int start = 0, end = nums.length - 1;
+        while (start +1 < end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] == num) {
+                start = mid;
+            } else if (nums[mid] < num) {
+                start = mid;
+            } else {
+                end = mid;
+            }
+        }
+        if (num < nums[start]) {
+        	return start;
+        }else if(num < nums[end]){
+        	return end; 
+        }else{
+        	return end + 1;
+        }
+    }
+
 }

@@ -1,5 +1,7 @@
 package Lintcode.Array.Median;
 
+import java.util.Arrays;
+
 /**
 Median of two Sorted Arrays
 
@@ -40,10 +42,13 @@ public class Median_of_two_Sorted_Arrays {
 //		System.out.println(""+findKthSmallest( arr1,0, arr2,0,5));
 //		System.out.println(""+findKthSmallest( arr1,0, arr2,0,6));
 	
-//		int arr1[] = {1,2,3,4,5,6};
-//		int arr2[] = {2,3,4,5};
-		int arr1[] = {1,2};
-		int arr2[] = {3,4};
+//		return 3.5
+		int arr1[] = {4,5,6,1,2,3};
+		int arr2[] = {2,3,4,5};
+		
+//		return 2.5
+//		int arr1[] = {1,2,3};
+//		int arr2[] = {3,4};
 
 		System.out.println(""+findMedianSortedArrays( arr1, arr2));
 
@@ -56,6 +61,8 @@ public class Median_of_two_Sorted_Arrays {
     //那么找第k大的元素呢？    
 //	想想涉及到2个数组，k一般必须大于等于1，当k=1时只会涉及到1个数组，这是一个特例
     public static double findMedianSortedArrays(int[] arr1, int[] arr2) {
+    	Arrays.sort(arr1);
+    	Arrays.sort(arr2);
         int len = arr1.length + arr2.length;
         if (len % 2 == 1) {
              return findKthSmallest(arr1, 0, arr2, 0, len / 2 + 1);

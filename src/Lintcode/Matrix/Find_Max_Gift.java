@@ -122,18 +122,23 @@ public class Find_Max_Gift {
 				};
 		System.out.println(""+Matrix.fromMatrixToString(matrix));
 //		System.out.println(""+Matrix.fromMatrixToString(matrix2));
-
+		System.out.println("uniquePaths:");
+		System.out.println(""+uniquePaths(matrix.length, matrix[0].length));
 //		System.out.println(""+findMaxGift02(matrix));
 //		System.out.println(""+findMaxGift1(matrix));
 //		System.out.println(""+findMaxGift2(matrix));
 //		System.out.println(""+findPathOfMaxGift1(matrix));
+		
+		System.out.println("printAllPossiblePaths: ");
 		printAllPossiblePaths(matrix);
+		System.out.println("findMaxGift03: ");
 //		printAllPossiblePaths(matrix2);
 //		findMaxPath(matrix);
 //		findMaxPath(matrix2);
 //		findMaxGift01(matrix);
-		findMaxGift03(matrix);
+		findMaxGift02(matrix);
 	}
+	
 	//===printAllPossiblePaths=================================================================================================================
 	//can only go right or down
 	private static void printAllPossiblePaths(int[][] matrix) {
@@ -142,27 +147,28 @@ public class Find_Max_Gift {
 		List<Integer> path = new ArrayList<Integer>();
 		int len = matrix.length;
 		path.add(matrix[0][0]);
-		printAllPossiblePaths(result, path, matrix, 0, 0, len -1, len-1 );
+		printAllPossiblePaths(result, path, matrix, 0, 0 );
 		System.out.println(""+result);
 		System.out.println(""+result.size());
 	}
 	//get all possible paths
 	private static void printAllPossiblePaths(List<List<Integer>> result, List<Integer> path, int[][] matrix, int row1,
-			int col1, int row2, int col2) {
+			int col1) {
 		// TODO Auto-generated method stub
+		int len = matrix.length;
 //		if(row1 < 0 || row1 > row2 || col1 < 0 || col1 > col2) return;
-		if(row1 == row2 && col1 == col2){
+		if(row1 == len -1 && col1 == len -1){
 			result.add(new ArrayList<Integer>(path));
 			return;
 		}
-		if(col1+1 <= col2){
+		if(col1+1 <= len -1){
 			path.add(matrix[row1][col1+1]);
-			printAllPossiblePaths(result, path, matrix, row1,     col1+1, row2, col2 );
+			printAllPossiblePaths(result, path, matrix, row1,     col1+1 );
 			path.remove(path.size()-1);
 		}
-		if(row1+1 <= row2){
+		if(row1+1 <= len -1){
 			path.add(matrix[row1+1][col1]);
-			printAllPossiblePaths(result, path, matrix, row1 + 1, col1,   row2, col2 );
+			printAllPossiblePaths(result, path, matrix, row1 + 1, col1);
 			path.remove(path.size()-1);
 		}
 	}
@@ -436,7 +442,7 @@ public class Find_Max_Gift {
 		int[][] max = new int[len][len];
 		max[0][0] = matrix[0][0];
 		for(int j = 1; j< len; j++){
-			max[0][j] = matrix[0][j] + max[0][j-1] ;
+			max[0][j] = max[0][j-1] + matrix[0][j];
 		}
 		for(int i = 1; i< len; i++){
 			max[i][0] = max[i-1][0] + matrix[i][0];
@@ -529,5 +535,24 @@ public class Find_Max_Gift {
 		}
 		return matrix[len-1][len-1];
 	}
+	
+    private static int uniquePaths(int m, int n) {
+        // write your code here 
+        if(m <= 0 || n <= 0) return 0;
+        int[][] matrix = new int[m][n];
+        for(int i = 0; i < m; i++){
+            matrix[i][0] = 1;
+        }
+        for(int j = 0; j < n; j++){
+            matrix[0][j] = 1;
+        }
+        
+        for(int i = 1; i < m; i++ ){
+            for(int j = 1; j < n; j++){
+                matrix[i][j] = matrix[i-1][j] + matrix[i][j-1];
+            }
+        }
+        return matrix[m-1][n-1];
+    }
 
 }

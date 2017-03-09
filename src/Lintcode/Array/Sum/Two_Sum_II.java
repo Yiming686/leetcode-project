@@ -8,10 +8,10 @@ public class Two_Sum_II {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] arr = new int[]{1,5,3,9,12};
-//		int[] arr = new int[]{5,5,3,9,12};
+//		int[] arr = new int[]{1,5,3,9,12};
+		int[] arr = new int[]{5,5,3,9,12};
 		int target = 10;
-		System.out.println("twoSumII : "+twoSumII (arr, target));
+		System.out.println("twoSumII : "+twoSumII(arr, target));
 		System.out.println("twoSumII2: "+twoSumII2(arr, target));
 	}
 	

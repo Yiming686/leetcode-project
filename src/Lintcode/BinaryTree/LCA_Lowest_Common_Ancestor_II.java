@@ -15,7 +15,13 @@ package Lintcode.BinaryTree;
  * Have you met this question in a real interview? Yes Example For the following
  * binary tree:
  * 
- * 4 / \ 3 7 / \ 5 6 LCA(3, 5) = 4
+ *   4 
+ *  / \ 
+ * 3   7 
+ *    / \ 
+ *   5   6 
+ * 
+ * LCA(3, 5) = 4
  * 
  * LCA(5, 6) = 7
  * 

@@ -1,5 +1,7 @@
 package Lintcode.Matrix;
 
+import Lintcode.String.Valid_Number;
+
 /**
 Word Search Show result 
 
@@ -29,10 +31,51 @@ public class Word_Search {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		char[][] board = new char[3][];;
+//		board[0] = "zoaf".toCharArray();
+//		board[1] = "agai".toCharArray();
+//		board[2] = "dcan".toCharArray();
+		board[0] = "1a98".toCharArray();
+		board[1] = "2bc7".toCharArray();
+		board[2] = "3456".toCharArray();
+		System.out.println(""+Matrix.fromMatrixToString(board));
+		System.out.println(""+exist2(board, "c789ab"));
+	
 
 	}
-
-    public static boolean exist(char[][] board, String word) {
+    public static boolean exist2(char[][] board, String word) {
+        if(board == null || board.length == 0)
+            return false;
+        if(word == null || word.length() == 0)
+            return false;
+        
+        boolean[][] isVisited = new boolean[board.length][board[0].length];
+        boolean hasWord = false;
+        for(int i = 0; i< board.length; i++){
+            for(int j=0; j< board[0].length; j++){
+            	if(hasWord(board, word, 0, i , j)){
+            		return true;
+            	}
+            }
+        }
+        return hasWord;
+    }
+    private static boolean hasWord(char[][] board, String word, int pos, int i, int j) {
+		// TODO Auto-generated method stub
+    	if(pos == word.length()) return true;
+		if(i < 0 || i >= board.length || j < 0 || j >= board[0].length) return false;
+		System.out.println("i:j "+i+", "+j+",    "+word.substring(0,pos+1));
+		if(board[i][j] != word.charAt(pos)) return false;
+		char ch = board[i][j];
+		board[i][j] = '#';
+    	boolean hasWord = hasWord(board, word, pos + 1, i + 1, j    ) ||//向下
+    					  hasWord(board, word, pos + 1, i,     j + 1) ||//向右
+    					  hasWord(board, word, pos + 1, i - 1, j    ) ||//向上
+    					  hasWord(board, word, pos + 1, i,     j - 1);  //向左
+    	board[i][j] = ch; 
+    	return hasWord;
+	}
+	public static boolean exist(char[][] board, String word) {
         if(board == null || board.length == 0)
             return false;
         if(word == null || word.length() == 0)

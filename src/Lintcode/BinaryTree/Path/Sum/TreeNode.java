@@ -15,7 +15,7 @@ public class TreeNode {
 
 //	public static TreeNode deserialize(String data) {
     public static TreeNode fromStringToTree(String data) {
-        if (data.equals("{}")) {
+        if (data.equals("{}") || data.equals("[]")) {
             return null;
         }
         //待处理集合，一个数组，一个list，list为空
@@ -32,7 +32,7 @@ public class TreeNode {
         //循环变量i，isLeftChild 和 index 
         for (int i = 1; i < vals.length; i++) {
             // index = (i-1)/2;
-            if (!vals[i].equals("#")) {
+            if (!vals[i].equals("#") && !vals[i].equals("null")) {
                 TreeNode node = new TreeNode(Integer.parseInt(vals[i]));
                 if (isLeftChild) {
                     list.get(index).left = node;

@@ -27,7 +27,12 @@ public class Valid_Number {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		System.out.println("-0.5::true::  "+isNumber("-0.5"));
+		System.out.println("-0.5::true::  "+isNumber("-0.5"));
+		System.out.println("-0.5::true::  "+isNumber("-0.5"));
+		System.out.println("-0.5::true::  "+isNumber("-0.5"));
+		System.out.println("-0.5::true::  "+isNumber("-0.5"));
+		System.out.println("00.5::false::  "+isNumber("00.5"));
 	}
 
 	public static boolean isNumber(String str) {
