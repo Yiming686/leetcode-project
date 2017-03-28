@@ -14,7 +14,7 @@ public class Java_Class {
 	
 }
 // public, final, abstract, default
-  abstract class B {
+  abstract class node2 {
 		
 		
 }

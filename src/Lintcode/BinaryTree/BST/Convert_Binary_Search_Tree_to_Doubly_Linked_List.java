@@ -6,6 +6,8 @@ public class Convert_Binary_Search_Tree_to_Doubly_Linked_List {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		int[] modes = new int[0]; 
+		System.out.println(""+modes == null );
 		TreeNode root = TreeNode.fromStringToTree("{4,2,5,1,3}");
 		System.out.println(""+TreeNode.fromTreeToString(root));
 		DoublyListNode  head = bstToDoublyList2(root);
@@ -36,14 +38,14 @@ public class Convert_Binary_Search_Tree_to_Doubly_Linked_List {
   	    DoublyListNode dummy = new DoublyListNode(0);
 
         LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
-        TreeNode curt = root;
-        while (curt != null || !stack.isEmpty()) {
-            while (curt != null) {
-                stack.push(curt);
-                curt = curt.left;
+        TreeNode curr = root;
+        while (curr != null || !stack.isEmpty()) {
+            while (curr != null) {
+                stack.push(curr);
+                curr = curr.left;
             }
-            curt = stack.pop();
-            DoublyListNode node = new DoublyListNode(curt.val);
+            curr = stack.pop();
+            DoublyListNode node = new DoublyListNode(curr.val);
             if(dummy.next == null) {
                 node.prev = node;
                 node.next = node;
@@ -55,7 +57,7 @@ public class Convert_Binary_Search_Tree_to_Doubly_Linked_List {
                 head.prev.next = node;
                 head.prev = node;
             }
-            curt = curt.right;
+            curr = curr.right;
         }
    	    return dummy.next;
 

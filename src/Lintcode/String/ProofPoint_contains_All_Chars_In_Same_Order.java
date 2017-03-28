@@ -37,25 +37,59 @@ public class ProofPoint_contains_All_Chars_In_Same_Order {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //			String str1 = "gogloe";google
-			String str2 = "google";
-			String str1 = "goe";
-			System.out.println(""+containsAllCharsInSameOrder(str1, str2));
+			String str1 = "goet";
+			String str2 = "google";//
+//			System.out.println(""+containsAllCharsInSameOrder(str1, str2));
 			str2 = "geo";
+			str1 = "haacckkerrannkk";
+			str2 = "hackerrank";
 			System.out.println(""+containsAllCharsInSameOrder(str1, str2));
-			str2 = "gto";
+			str1 = "haacckkerannk";
+			str2 = "hackerrank";
 			System.out.println(""+containsAllCharsInSameOrder(str1, str2));
-			str2 = "goo";
+			str1 = "haacckkerranlkn";
+			str2 = "hackerrank";
 			System.out.println(""+containsAllCharsInSameOrder(str1, str2));
-			str1 = "ooooooooo";
-			str2 = "ooo";
-			System.out.println(""+containsAllCharsInSameOrder(str1, str2));
+			
+//			str2 = "gto";
+//			System.out.println(""+containsAllCharsInSameOrder(str1, str2));
+//			str2 = "goo";
+//			System.out.println(""+containsAllCharsInSameOrder(str1, str2));
+//			str1 = "ooooooooo";
+//			str2 = "ooo";
+//			System.out.println(""+containsAllCharsInSameOrder(str1, str2));
 
 	}
 
 	//简单实现，非常好！看成两个字符序列了
 	//此题检测String1里面是否完全包含String2，str1 = "google";str2 = "goe";则返回true
 	//此题目String1和String2不对称，如果String1里面完全包含String2，String2里面可能不完全包含String1
+//	worked,	第二个String是Hackerrank，判断第一个字符是否有subsequenc等于第二个字符，次序相关，不可调换
 	static boolean containsAllCharsInSameOrder(String string1, String string2)
+	{ 
+		if(string1 == null|| string2 == null) return false;             //if null string is not allowed
+		if(string1.length() == 0 || string2.length() == 0) return false;//if empty string is not allowed 
+	    char[] arr1 = string1.toCharArray();
+	    char[] arr2 = string2.toCharArray();
+	    int len1 = arr1.length;
+	    int len2 = arr2.length;
+	    for(int i1 = 0, i2 = 0; i2 < len2; i2++){
+	    	char ch2 = arr2[i2];
+	    	while(i1<len1 && arr1[i1] != ch2){
+	    		i1++;
+	    	}
+	    	if(i1 == len1){
+	    		return false;
+	    	}else{
+	    		System.out.println("ch1:ch2  "+i1 +", "+i2+", "+arr1[i1] +" : "+arr2[i2]);
+	    		i1++;
+	    	}
+	    }
+	    return true;
+	}
+	
+//	wrong solution, does not check the last char in string2
+	static boolean containsAllCharsInSameOrder00(String string1, String string2)
 	{ 
 		if(string1 == null|| string2 == null) return false;             //if null string is not allowed
 		if(string1.length() == 0 || string2.length() == 0) return false;//if empty string is not allowed 
@@ -114,5 +148,27 @@ public class ProofPoint_contains_All_Chars_In_Same_Order {
 	    return true;
 	}
 
+
+	static String containsAllCharsInSameOrder3(String string1, String string2)
+	{ 
+		if(string1 == null|| string2 == null) return "NO";             //if null string is not allowed
+		if(string1.length() == 0 || string2.length() == 0) return "NO";//if empty string is not allowed 
+	    char[] arr1 = string1.toCharArray();
+	    char[] arr2 = string2.toCharArray();
+	    int len1 = arr1.length;
+	    int len2 = arr2.length;
+	    for(int i1 = 0, i2 = 0; i2 < len2; i2++){
+	    	char ch2 = arr2[i2];
+	    	while(i1<len1 && arr1[i1] != ch2){
+	    		i1++;
+	    	}
+	    	if(i1 == len1){
+	    		return "NO";
+	    	}else{
+	    		i1++;
+	    	}
+	    }
+	    return "YES";
+	}
 
 }

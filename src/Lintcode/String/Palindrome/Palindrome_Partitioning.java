@@ -2,6 +2,7 @@ package Lintcode.String.Palindrome;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -34,10 +35,46 @@ public class Palindrome_Partitioning {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String str = "every";
+		String str = "goodgood";
 //		String str = "ddddd";
 		System.out.println(""+partition(str));
 	}
+
+    // worked, Best solution:
+    public static List<List<String>> partition(String str) {
+        List<List<String>> result = new ArrayList<>();
+        if(str == null || str.length() == 0) return result;
+        int len = str.length();
+        char[] arr = str.toCharArray();
+        boolean[][] isPal = new boolean[len][len];//all false;
+        for(int row = len - 1; row >= 0; row--){//from index: row
+            for(int col = row; col < len; col++){//to index: col
+                // if(str.charAt(row) == str.charAt(col) && (col - row < 2 || isPal[row+1][col-1])){ // worked
+                if(arr[row] == arr[col] && (col - row <=2 || isPal[row+1][col-1])){
+                    isPal[row][col] = true;
+                }
+            }
+        }
+        List<String> path = new ArrayList<>();
+        int pos = 0;
+        helper3(result, path, isPal, str, pos);
+        return result;
+
+    }
+    
+    private static void helper3(List<List<String>> result, List<String> path, boolean[][] isPal, String str, int pos){
+        if(pos == str.length()){
+            result.add(new ArrayList<String>(path));
+        }
+        for(int i = pos + 1; i <= str.length(); i++){
+            String temp = str.substring(pos, i);
+            if(isPal[pos][i-1]){
+                path.add(temp);
+                helper3(result, path, isPal, str, i);
+                path.remove(path.size()-1);
+            }
+        }
+    }
 
 	
     //易错点: 
@@ -46,7 +83,7 @@ public class Palindrome_Partitioning {
     // substring(),而不是subString(),String str = s.substring(pos, i);
     // 什么应该返回? isPal(), if(str == null) throw new IllegalArgumentException();
 	
-    public static ArrayList<ArrayList<String>> partition(String str) {
+    public static ArrayList<ArrayList<String>> partition11(String str) {
         // write your code here
         ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
         if (str == null) {

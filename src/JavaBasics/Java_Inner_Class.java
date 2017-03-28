@@ -3,7 +3,7 @@ package JavaBasics;
 import java.util.HashMap;
 import java.util.Map;
 
-class A {
+class node1 {
 	static int a = 0;
 	C ca = new C();
 
@@ -23,7 +23,7 @@ class A {
 
 		B(int b2) {
 			this.b1 = b2;
-			A.this.a2 = b2;
+			node1.this.a2 = b2;
 			b2 = a2;
 			a2 = b2;
 			a2 = b1;
@@ -34,7 +34,7 @@ class A {
 
 class C {
 	int ff() {
-		new A() {
+		new node1() {
 			{
 				f();
 			}

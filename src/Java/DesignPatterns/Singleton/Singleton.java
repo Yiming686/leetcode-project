@@ -2,7 +2,9 @@ package Java.DesignPatterns.Singleton;
 
 public class Singleton {
 
-	private Singleton(){}//must provide: private constructor
+	private Singleton(){
+		
+	}//must provide: private constructor
 	
 	//must provide: static inner class
 	private static class SingletonHolder{

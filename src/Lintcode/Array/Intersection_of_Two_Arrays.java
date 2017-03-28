@@ -44,7 +44,8 @@ public class Intersection_of_Two_Arrays {
 //		int[] arr1 = { 0, 1, 2,1,1, 10 };
 //		int[] arr2 = { 1,1, 2, 3, 4, 5 };
 		int[] arr1 = { 5,1,2,2,3,3,3,3,6,7,8 };
-		int[] arr2 = { 11,3,3,3,2,2,1,14,23 };
+//		int[] arr2 = { 11,3,3,3,2,2,1,14,23 };
+		int[] arr2 = { 11,55 };
 		System.out.println(""+Utils.arrayToString(intersection(arr1, arr2)));
 		Arrays.sort(arr1);
 		Arrays.sort(arr2);

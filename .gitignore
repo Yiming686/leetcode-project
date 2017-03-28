@@ -1,4 +1,7 @@
-.class
+.gitignore
+*.class
 .classpath
 /.settings
-/bin
+./bin
+bin/
+/.class

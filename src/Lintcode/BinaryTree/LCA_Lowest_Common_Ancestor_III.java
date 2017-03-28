@@ -6,10 +6,11 @@ public class LCA_Lowest_Common_Ancestor_III {
 		// TODO Auto-generated method stub
 		TreeNode root = TreeNode.fromStringToTree("{4,3,7,#,#,5,6}");
 		System.out.println(""+TreeNode.convertToString(root));
-		TreeNode p = root.left;
-		TreeNode q = root.right.left;
-		q = new TreeNode(78);
-		TreeNode comm = lowestCommonAncestor3( root,  q, p);
+		TreeNode node1 = root.left;
+		TreeNode node2 = root.right.left;
+//		node2 = new TreeNode(78);
+		TreeNode comm = lowestCommonAncestor3( root,  node1, node2);
+		System.out.println("findLowestCommonAncestorBT: "+ findLowestCommonAncestorBT(root, node1,node2).val);
 		System.out.println(""+ (comm == null ? null : comm.val));
 	}
 	
@@ -71,5 +72,52 @@ public class LCA_Lowest_Common_Ancestor_III {
 	        node = n;
 	    }
 	}
+	
+	//findLowestCommonAncestor
+    //worked, it wors for BT and BST,  this one works if two nodes are not given in the tree
+    public static TreeNode findLowestCommonAncestorBT(TreeNode root, TreeNode node1, TreeNode node2) {
+        if(root == null || node1 == null || node2 == null){
+           return null;
+        }        
+        int[] count = new int[1];
+//        以下两行，调用两种函数，都worked，
+        TreeNode node = findLowestCommonAncestorBT(root, node1, node2, count);
+//        TreeNode node = findLowestCommonAncestorBST(root, node1, node2, count);
+//        System.out.println("count[0]: "+count[0]);
+        if (count[0] == 2)
+            return node;
+        else
+            return null;
+    }
+
+    //it only works for BT or BST,  this one works even two nodes are not in the tree
+   static TreeNode findLowestCommonAncestorBT(TreeNode root, TreeNode node1, TreeNode node2, int[] count){
+       if(root == null || node1 == null || node2 == null){
+           return null;
+       }
+       TreeNode left =  findLowestCommonAncestorBT(root.left,  node1, node2, count);
+       TreeNode right = findLowestCommonAncestorBT(root.right, node1, node2, count);
+       if(root == node1 || root == node2){
+    	   if(root == node1){
+    		   count[0]++;
+    	   } 
+    	   if(root == node2){
+    		   count[0]++;
+    	   }
+    	   return root;
+       } 
+    
+        if(left!=null && right != null){
+             return root;
+        }
+        if(left != null){
+             return left;
+        }
+        if(right != null){
+             return right;
+        }
+        return null;
+   }
+
 	
 }

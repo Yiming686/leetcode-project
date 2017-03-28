@@ -1,7 +1,0 @@
-
-String 到 String 的转化问题：
-String --> 为char数组
-数组--> String
-
-String.ValueOf(char[]);
-

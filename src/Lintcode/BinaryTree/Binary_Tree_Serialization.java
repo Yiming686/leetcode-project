@@ -57,12 +57,12 @@ public class Binary_Tree_Serialization {
 //		System.out.println(""+serialize12(root));
 //		String str = "{7}";
 //		System.out.println(""+TreeNode.convertToString(deserialize44(str)));
-		System.out.println(""+TreeNode.convertToString(deserialize44(TreeNodeStrIn)));
+		System.out.println(""+TreeNode.convertToString(deserialize12(serialize12(root))));
 
 	}
 	
-    public static TreeNode deserialize44(String data) {
-        if (data == null || !data.startsWith("{") ||!data.endsWith("}")|| data.equals("{}")) {
+    public static TreeNode deserialize12(String data) {
+        if (data == null || !data.startsWith("[") ||!data.endsWith("]")|| data.equals("[]")) {
             return null;
         }
         
@@ -79,15 +79,17 @@ public class Binary_Tree_Serialization {
                 TreeNode node = queue.poll();
                 if(node!=null){
                     if(index < len && !vals[index].equals("#")){
-                        node.left = new TreeNode(Integer.valueOf(vals[index++]));
+                        node.left = new TreeNode(Integer.valueOf(vals[index]));
                     }else{
                         node.left = null;
                     }
+                    index++;
                     if(index < len &&!vals[index].equals("#")){
-                        node.right = new TreeNode(Integer.valueOf(vals[index++]));
+                        node.right = new TreeNode(Integer.valueOf(vals[index]));
                     }else{
                         node.right = null;
                     }
+                    index++;
                     queue.offer(node.left);
                     queue.offer(node.right);
                 }else{
@@ -98,6 +100,7 @@ public class Binary_Tree_Serialization {
         return root;
     }
 
+//    jiuzhang, ignore it
     public static String serialize11(TreeNode root) {
         if (root == null) {
             return "{}";
@@ -158,10 +161,8 @@ public class Binary_Tree_Serialization {
             }
             prefix = ",";
         }
-//        while(result.endsWith(",#")){
-//            result = result.substring(0, result.length() - 2);
-//        }
         result += "]";
+        System.out.println(""+result);
         return result;
     }
 
