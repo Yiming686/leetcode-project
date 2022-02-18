@@ -1,6 +1,6 @@
 package Lintcode.Matrix;
 
-import Lintcode.Array.Matrix;
+import Utils.MatrixUtils;
 
 /**
 Spiral Matrix II Show result 
@@ -41,23 +41,23 @@ public class Spiral_Matrix_III {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(-1, -1), false));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(0, 0), false));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(1, 1), false));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(2, 2), false));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(3, 3), false));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(4, 4), false));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(5, 5), false));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(3, 5), false));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(5, 3), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(0, 0), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(1, 1), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(2, 2), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(3, 3), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(4, 4), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(5, 5), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(3, 5), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(5, 3), false));
 
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(2, 6), false));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(6, 2), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(2, 6), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(6, 2), false));
 
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(1, 6), false));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(6, 1), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(1, 6), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(6, 1), false));
 
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(5, 12), false));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(12, 5), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(5, 12), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(12, 5), false));
 
 	}
 	

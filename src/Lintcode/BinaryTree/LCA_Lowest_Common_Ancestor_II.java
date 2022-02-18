@@ -1,5 +1,7 @@
 package Lintcode.BinaryTree;
 
+import Lai.BinaryTree.LCA.Lowest_Common_Ancestor_II.TreeNodeP;
+
 /**
  * Lowest Common Ancestor II Show result
  * 
@@ -32,7 +34,7 @@ package Lintcode.BinaryTree;
  * 
  * Related Problems Expand Medium Lowest Common Ancestor *
  */
-public final class LCA_Lowest_Common_Ancestor_II {
+public final class LCA_Lowest_Common_Ancestor_II { 
 
 	 class ParentTreeNode {
 		 public ParentTreeNode parent, left, right;
@@ -90,6 +92,47 @@ public final class LCA_Lowest_Common_Ancestor_II {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public ParentTreeNode lowestCommonAncestorII4(ParentTreeNode root, ParentTreeNode A, ParentTreeNode B) {
+		return lowestCommonAncestor(A, B);
+	}
+	public static ParentTreeNode lowestCommonAncestor(ParentTreeNode one, ParentTreeNode two) {
+		// Write your solution here.
+		if (one == null || two == null) {
+			return null;
+		}
+		int lenOne = length(one);
+		int lenTwo = length(two);
+		return lowestCommonAncestorByDiff(one, two, lenOne - lenTwo);
+	}
+
+	private static ParentTreeNode lowestCommonAncestorByDiff(ParentTreeNode longer, ParentTreeNode shorter, int diff) {
+		while (diff > 0) {
+			longer = longer.parent;
+			diff--;
+		}
+		while (diff < 0) {
+			shorter = shorter.parent;
+			diff++;
+		}
+		while (longer != shorter) {
+			longer = longer.parent;
+			shorter = shorter.parent;
+		}
+		return longer;
+	}
+
+	private static int length(ParentTreeNode node) {
+		if (node == null) {
+			return 0;
+		}
+		int len = 0;
+		while (node != null) { 
+			len++;
+			node = node.parent;
+		}
+		return len;
 	}
 
 }

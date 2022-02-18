@@ -3,7 +3,8 @@ package Lintcode.BinaryTree.Path.Sum;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.sun.medialib.mlib.mediaLibImageJPanel;
+import Utils.TreeNodeUtils;
+import Utils.TreeNodeUtils.TreeNode;
 
 /**
 
@@ -55,22 +56,22 @@ public class Path_Sum_III {
 //		String TreeNodeStrIn ="{1,2,3,4,5,6,7,8,9,10}";
 		String TreeNodeStrIn ="[10,5,-3,3,2,null,11,3,-2,null,1]";
 //		String TreeNodeStrIn ="{1,2,3,4,5,6,7,8,9,10,#,1,#,#,#,#,#,#,2}";
-		TreeNode root = TreeNode.fromStringToTree(TreeNodeStrIn);
-
+		TreeNode<Integer>  root = TreeNodeUtils.fromStringToTree(TreeNodeStrIn, TreeNode.class, Integer.class);
+		TreeNodeUtils.printTree(root);
 		
 		System.out.println(""+pathSum(root, 8));
 //		System.out.println(""+pathSum11(root, 8));
 		
 	}
 
-    public static int pathSum(TreeNode root, int sum) {
+    public static int pathSum(TreeNode<Integer> root, int sum) {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(0, 1);  //Default sum = 0 has one count
         return helper(root, 0, sum, map); 
     }
     
     //BackTrack one pass
-    public static int helper(TreeNode root, int sum, int target, Map<Integer, Integer> map){
+    public static int helper(TreeNode<Integer>  root, int sum, int target, Map<Integer, Integer> map){
         if(root == null)
             return 0;
         sum += root.val;
@@ -84,13 +85,13 @@ public class Path_Sum_III {
     }
 
     
-    public static int pathSum11(TreeNode root, int sum) {
+    public static int pathSum11(TreeNode<Integer>  root, int sum) {
         if(root == null)
             return 0;
         return dfs(root, sum)+pathSum(root.left, sum)+pathSum(root.right, sum);
     }
 // 从roo到叶子节点等于sum的个数
-    private static int dfs(TreeNode root, int sum){
+    private static int dfs(TreeNode<Integer> root, int sum){
 //    	System.out.println(""+sum);
         int res = 0;
         if(root == null)

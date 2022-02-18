@@ -14,6 +14,7 @@ public class NonDecreasing_Array_With_1_or_Less_Swap {
 		assertTrue(canBuildNonDecreasingArray(new int[]{1,5,3,3,7}));
 		assertTrue(canBuildNonDecreasingArray(new int[]{1,2,3,4,5,6,7,8,9,10}));//sorted, true
 		assertFalse(canBuildNonDecreasingArray(new int[]{1,2,3,14,5,6,7,8,9,10}));//false
+		assertTrue(canBuildNonDecreasingArray(new int[]{1,2,3,14,5,6,7,8,9,10,4}));//false
 		assertFalse(canBuildNonDecreasingArray(new int[]{1,2,8,4,5,6,7,9,10}));//false
 		assertFalse(canBuildNonDecreasingArray(new int[]{1,3,9,5,7,8}));//false
 		assertTrue(canBuildNonDecreasingArray(new int[]{1,3,7,5,9}));//true
@@ -69,77 +70,86 @@ public class NonDecreasing_Array_With_1_or_Less_Swap {
 //		System.out.println(""+canBuildNonDecreasingArray(new int[]{1,2,3,10,4,4,4,4,5,6,7,8,9,11,12,13,14,15,16}));
 		
 //		System.out.println("False: "+canBuildNonDecreasingArray(new int[]{1,2,3,14,5,6,7,8,9,10}));
-		System.out.println("False: "+canBuildNonDecreasingArray(new int[]{1,2,6,6,4,4,4,4,6,6,8,9,10}));
+		System.out.println("False: "+canBuildNonDecreasingArray(new int[]{1,2,3,14,5,6,7,8,9,4}));
+//		System.out.println("False: "+canBuildNonDecreasingArray(new int[]{1,2,6,6,4,4,4,4,6,6,8,9,10}));
 //		System.out.println("False: "+canBuildNonDecreasingArray(new int[]{1,2,7,4,3,5,6,7,8,9,10}));
 //		System.out.println("True: "+canBuildNonDecreasingArray(new int[]{1,2,7,4,5,6,3,8,9,10}));
 //		System.out.println("False: "+canBuildNonDecreasingArray(new int[]{1,2,9,4,5,6,3,7,8,9,10}));
+//		System.out.println("False: "+canBuildNonDecreasingArray(new int[]{2,5,3,3,7}));
+//		System.out.println("False: "+canBuildNonDecreasingArray(new int[]{2,5,3,4,7}));
+//		25337
 	}
 	
-	private static boolean canBuildNonDecreasingArray(int[] arr){
+	private static boolean canBuildNonDecreasingArray(int[] A){
 		int leftOfFirst = Integer.MIN_VALUE;
 		int rightOfFirst = Integer.MAX_VALUE;
 		int leftOfSecond = Integer.MIN_VALUE;
 		int rightOfSecond = Integer.MAX_VALUE;
-		int len = arr.length;
+		int len = A.length;
 		int count = 0;
 		int indexOfFirst = -1;
 		int indexOfSecond = -1;
 		for(int i = 0; i + 1 < len; i++ ){
-			if(arr[i] > arr[i+1]){
+			if(A[i] > A[i+1]){
 				count++;
-//				System.out.println("Count++: "+count);
 				if(count == 1){
+					//update indexOfFirst,  leftOfFirst, rightOfFirst;
+					//update indexOfSecond, leftOfSecond, rightOfSecond;
+					indexOfFirst = i;
 					if(i-1 >= 0){//update leftOfFirst
-						leftOfFirst = arr[i-1];
+						leftOfFirst = A[i-1];
 					} 
-					if(arr[i+1] < leftOfFirst){
+					//return false in the following case
+					rightOfFirst = A[i+1];
+					if(rightOfFirst < leftOfFirst){
 						return false;
 					}
-					rightOfFirst = arr[i+1];
-					indexOfFirst = i;
 					
 					indexOfSecond = indexOfFirst + 1;//1, len - 1
+					leftOfSecond = A[indexOfSecond];
 					if(indexOfSecond + 1 < len ){//update rightOfSecond
-						if(arr[indexOfSecond] < arr[indexOfSecond + 1]){
-							rightOfSecond = arr[indexOfSecond+1];
+						if(A[indexOfSecond] < A[indexOfSecond + 1]){
+							rightOfSecond = A[indexOfSecond+1];
 						}else{
 							int temp = indexOfSecond+2;
-							while(temp < len && arr[temp] == arr[indexOfSecond]){
+							while(temp < len && A[temp] == A[indexOfSecond]){
 								i = temp;
 								temp++;
 							}
 							if(temp < len){
-								rightOfSecond = arr[temp];
+								rightOfSecond = A[temp];
 							}
 						}
 					} 
 
 				}else if(count == 2){
+					//update indexOfSecond, leftOfSecond, rightOfSecond;
+					indexOfSecond = i + 1;
+					leftOfSecond = A[i];
 					if(i + 2 < len){//update rightOfSecond
-						rightOfSecond = arr[i+2];
+						rightOfSecond = A[i+2];
+					}else{
+						rightOfSecond = Integer.MAX_VALUE;	
 					} 
-					if(arr[i+1] < leftOfFirst || arr[i+1] > rightOfFirst || arr[indexOfFirst] < arr[i] || arr[indexOfFirst] > rightOfSecond){
+					//return false in the following case
+					if(A[indexOfSecond] < leftOfFirst || A[indexOfSecond] > rightOfFirst || A[indexOfFirst] < leftOfSecond || A[indexOfFirst] > rightOfSecond){
 						return false;
 					}
-					leftOfSecond = arr[i];
-					indexOfSecond = i + 1;//1, len - 1
 				}else{
 					return false;
 				}
 			}
 		}
-		System.out.println("count: "+ count);
 		if(count > 2){
 			return false;
 		}else if(count == 2){
-			if(leftOfFirst <= arr[indexOfSecond] && arr[indexOfSecond] <= rightOfFirst && leftOfSecond <= arr[indexOfFirst] && arr[indexOfFirst] <= rightOfSecond){
+			if(leftOfFirst <= A[indexOfSecond] && A[indexOfSecond] <= rightOfFirst && leftOfSecond <= A[indexOfFirst] && A[indexOfFirst] <= rightOfSecond){
 				return true;
 			}else{
 				return false;
 			}
 		}else if(count == 1){
-			leftOfSecond = arr[indexOfFirst+1];
-			if(leftOfFirst <= arr[indexOfSecond] && arr[indexOfFirst] <= rightOfSecond){
+			if(leftOfFirst <= A[indexOfSecond] && A[indexOfFirst] <= rightOfSecond){
 				return true;
 			}else{
 				return false;

@@ -3,7 +3,7 @@ package Lintcode.Matrix;
 import java.util.ArrayList;
 import java.util.List;
 
-import Lintcode.Array.Matrix;
+import Utils.MatrixUtils;
 
 /**
 Spiral Matrix
@@ -36,40 +36,40 @@ public class Spiral_Matrix {
 //		String s = "";s.cont
 		// TODO Auto-generated method stub
 		int[][] matrix = Spiral_Matrix_III.generateMatrix(3,5);
-		System.out.println(""+Matrix.fromMatrixToString(matrix));
+		System.out.println(""+MatrixUtils.fromMatrixToString(matrix));
 		System.out.println(""+spiralOrder(matrix)); 
 		
 		matrix = Spiral_Matrix_III.generateMatrix(0,0);
-		System.out.println(""+Matrix.fromMatrixToString(matrix));
+		System.out.println(""+MatrixUtils.fromMatrixToString(matrix));
 		System.out.println(""+spiralOrder(matrix)); 
 		
 		matrix = Spiral_Matrix_III.generateMatrix(1,1);
-		System.out.println(""+Matrix.fromMatrixToString(matrix));
+		System.out.println(""+MatrixUtils.fromMatrixToString(matrix));
 		System.out.println(""+spiralOrder(matrix)); 
 		
 		matrix = Spiral_Matrix_III.generateMatrix(2,2);
-		System.out.println(""+Matrix.fromMatrixToString(matrix));
+		System.out.println(""+MatrixUtils.fromMatrixToString(matrix));
 		System.out.println(""+spiralOrder(matrix)); 
 		
 		matrix = Spiral_Matrix_III.generateMatrix(3,3);
-		System.out.println(""+Matrix.fromMatrixToString(matrix));
+		System.out.println(""+MatrixUtils.fromMatrixToString(matrix));
 		System.out.println(""+spiralOrder(matrix)); 
 		
 		matrix = Spiral_Matrix_III.generateMatrix(4,4);
-		System.out.println(""+Matrix.fromMatrixToString(matrix));
+		System.out.println(""+MatrixUtils.fromMatrixToString(matrix));
 		System.out.println(""+spiralOrder(matrix)); 
 		
 
 		matrix = Spiral_Matrix_III.generateMatrix(5,5);
-		System.out.println(""+Matrix.fromMatrixToString(matrix));
+		System.out.println(""+MatrixUtils.fromMatrixToString(matrix));
 		System.out.println(""+spiralOrder(matrix)); 
 		
 		matrix = Spiral_Matrix_III.generateMatrix(5,11);
-		System.out.println(""+Matrix.fromMatrixToString(matrix));
+		System.out.println(""+MatrixUtils.fromMatrixToString(matrix));
 		System.out.println(""+spiralOrder(matrix)); 
 
 		matrix = Spiral_Matrix_III.generateMatrix(7,12);
-		System.out.println(""+Matrix.fromMatrixToString(matrix));
+		System.out.println(""+MatrixUtils.fromMatrixToString(matrix));
 		System.out.println(""+spiralOrder(matrix)); 
 
 	}

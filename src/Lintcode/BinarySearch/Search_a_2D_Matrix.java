@@ -31,82 +31,69 @@ Related Problems Expand
  */
 public class Search_a_2D_Matrix {
 
-	//TC is O(log(m*n))
-	public static boolean searchMatrix(int[][] matrix, int target) {
-		if (matrix == null || matrix.length == 0) {
-			return false;
-		}
-		if (matrix[0] == null || matrix[0].length == 0) {
-			return false;
-		}
-
-		int row = matrix.length, column = matrix[0].length;
-		int start = 0, end = row * column - 1;
-
-		while (start + 1 < end) {
-			int mid = start + (end - start) / 2;
-			int number = matrix[mid / column][mid % column];
-			if (number == target) {
-				return true;
-			} else if (number < target) {
-				start = mid + 1;
-			} else {
-				end = mid - 1;
-			}
-		}
-
-		if (matrix[start / column][start % column] == target) {
-			return true;
-		}
-		if (matrix[end / column][end % column] == target) {
-			return true;
-		}
-		return false;
-	}
-	
-	//TC is O(log(m)+log(n))
-    public static boolean searchMatrix2(int[][] matrix, int target) {
-        // write your code here
-        if (matrix == null || matrix.length == 0) {
-// 			return 0;
-			return false;
-		}
-		if (matrix[0] == null || matrix[0].length == 0) {
-// 			return 0;
-			return false;
-		}
-        // int num = 0;
-        
-        int rowLen = matrix.length;
-        int colLen = matrix[0].length;
-        
-        int row = 0;
-        int col = colLen - 1;
-        
-		while (row >=0 && row < rowLen && col >=0 && col < colLen) {
-		    int val = matrix[row][col];
-		    //找到后怎么办？num++，row和col怎么变，必须变，否则infinite loop
-		    //到底是row++还是col--；
-			if (val == target) {
-                // num++;
-                // col--;
-                return true;
-            } else if (val < target) {
-				row++;
-			} else {
-				col--;
-			}
-		}
-// 		return num;
-        return false;
-    }
-
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+//		int[][] matrix = {{1,2,3},null,{4,5,6}};
+		int[][] matrix = {null,null,null};
+		System.out.println(""+matrix.length);
+		System.out.println(""+ (matrix[0] == null));
 	}
 
+	//  worked, TC is O(log(m*n))
+	 public static boolean searchMatrix00(int[][] matrix, int target) {
+	     if(matrix == null || matrix.length == 0 ){
+	         return false;
+	     }
+	     if(matrix[0] == null || matrix[0].length == 0){
+	         return false;
+	     }
+	     int rows = matrix.length;
+	     int cols = matrix[0].length;
+	     
+	     int start = 0;
+	     int end = rows * cols - 1;
+	     while(start + 1 < end){
+	         int mid = start + (end - start)/2;
+	         int val = matrix[mid/cols][mid%cols];
+	         if(val == target){
+	             return true;
+	         }else if(val < target){
+	             start = mid; 
+	         }else{
+	             end = mid;
+	         }
+	     }
+	     if(matrix[start/cols][start%cols] == target || matrix[end/cols][end%cols] == target){
+	         return true;
+	     }
+	     return false;
+	 }
+ 
+	//  worked, TC is O(log(m)+log(n))
+	 public static boolean searchMatrix(int[][] matrix, int target) {
+	     if(matrix == null || matrix.length == 0 ){
+	         return false;
+	     }
+	     if(matrix[0] == null || matrix[0].length == 0){
+	         return false;
+	     }
+	     int rows = matrix.length;
+	     int cols = matrix[0].length;
+	     
+	     int row = 0;
+	     int col = cols - 1;
+	     while(row < rows && col >= 0){
+	         if(matrix[row][col] == target){
+	             return true;
+	         }else if(matrix[row][col] < target){
+	             row++;
+	         }else{
+	             col--;
+	         }
+	     }
+	     return false;
+	 }
+	
 }
 
 

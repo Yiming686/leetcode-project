@@ -68,6 +68,7 @@ public class Number_of_Airplanes_in_the_Sky {
                 if(p1.time != p2.time){
                     return p1.time - p2.time;
                 }else{
+//                    return p1.flag - p2.flag;//Very Important, landing first
                     return p1.flag - p2.flag;//Very Important, landing first
                 }
             }

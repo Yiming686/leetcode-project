@@ -24,19 +24,19 @@ public class Max_Integer_Sibling {
 		System.out.println(""+findMax(Integer.MIN_VALUE-1));
 //		System.out.println(""+findMax(-23454539));
 	}
-	private static int findMax(int num){
+	private static long findMax(long num){
 		if(num < 0) {
 			num = (-1) * num;	
 		}
-		int len = String.valueOf(Integer.MAX_VALUE).length();
-		int[] arr = new int[10];
-		int val = num;
-		while(val != 0){
-			int index = val%10;
+		int[] arr = new int[10];//10¸öÔªËØ£¬0--9
+//		long val = num;
+		while(num != 0){
+			int index = (int) (num%10);
 			arr[index]++;
-			val = val/10;
+			num = num/10;
 		}
 		String str = "";
+		int len = String.valueOf(Long.MAX_VALUE).length();
 		for(int i = len - 1; i >= 0; i--){
 			for(int count = 0; count < arr[i]; count++){
 				str += i;	
@@ -44,11 +44,11 @@ public class Max_Integer_Sibling {
 		}
 		System.out.println(""+str);
 		try{
-			val = Integer.valueOf(str);
+			num = Long.valueOf(str);
 		}catch(NumberFormatException ex){
-			val = -1;
+			num = -1;
 		}
-		return val;
+		return num;
 		
 	}
 

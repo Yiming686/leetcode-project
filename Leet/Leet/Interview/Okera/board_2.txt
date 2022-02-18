@@ -1,0 +1,4 @@
+3 3
+c a t a
+d k n a
+t a r b

@@ -1,6 +1,7 @@
 package Lintcode.Array.Combination;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
 322. Coin Change My Submissions Question
@@ -43,8 +44,29 @@ public class Coin_Change {
 		System.out.println("ms:"+(end1-start1));
 	}
 
+    //     Bottom up
+    public static int coinChange(int[] coins, int target) {
+        if(target < 0){
+            return -1;
+        }
+        if(target == 0 ){
+            return 0;
+        }
+        int[] dp = new int[target + 1];  //
+        Arrays.fill(dp, target + 1);  
+        dp[0] = 0;  
+        for (int i = 0; i < coins.length; i++) {
+            for (int j = 1; j <= target; j++) {
+                if ( j - coins[i] >= 0) {
+                    dp[j] = Math.min(dp[j], dp[j - coins[i]] + 1);
+                }
+            }
+        }
+        return dp[target] == target + 1 ? -1 : dp[target];
+    }
+
 	//worked, but Time Limit Exceeded 
-    public static int coinChange(int[] coins, int amount) {
+    public static int coinChangeBacktracking(int[] coins, int amount) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         ArrayList<Integer> list = new ArrayList<Integer>();
         int sum = 0;
@@ -73,5 +95,7 @@ public class Coin_Change {
              list.remove(list.size() - 1);
          }
      }
+     
+     
 
 }

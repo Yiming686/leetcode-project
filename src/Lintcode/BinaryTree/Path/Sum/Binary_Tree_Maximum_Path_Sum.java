@@ -1,5 +1,7 @@
 package Lintcode.BinaryTree.Path.Sum;
 
+import Utils.TreeNodeUtils;
+import Utils.TreeNodeUtils.TreeNode;
 
 /**
 Binary Tree Maximum Path Sum
@@ -31,7 +33,7 @@ public class Binary_Tree_Maximum_Path_Sum {
     //计算当前singlepath只和子节点的singlepath相关
     //maxpath:全局值，所求的当前树的最大path，不一定通过当前树的根节点
     //计算当前maxpath，是子节点的maxpath比较，然后
-    private class Result {
+    private static class Result {
         int singlePath, maxPath;
         Result(int singlePath, int maxPath) {
             this.singlePath = singlePath;
@@ -40,7 +42,7 @@ public class Binary_Tree_Maximum_Path_Sum {
     }
 
     //worked,singlePath含义好理解，但是值不一样，此值可正可负
-    private Result helper(TreeNode root) {
+    private Result helper(TreeNode<Integer> root) {
         
     	//[考察点]当root为null时，result的初值非常重要，毫无疑问，maxPath必须为最小整数，而singlePath必须为0
         // if(root == null){ return new Result(0, Integer.MIN_VALUE);}
@@ -49,7 +51,6 @@ public class Binary_Tree_Maximum_Path_Sum {
         
         Result left = helper(root.left);
         Result right = helper(root.right);
-        
         
         int singlePath = Math.max(left.singlePath + root.val, right.singlePath + root.val) ;
         // singlePath = Math.max(singlePath, 0);
@@ -67,7 +68,7 @@ public class Binary_Tree_Maximum_Path_Sum {
 
 	//jiuzhang solution，可称为上面的稍微改进版
     //worked,singlePath含义不好理解，此值大于等于0
-    private Result helper2(TreeNode root) {
+    private Result helper2(TreeNode<Integer> root) {
         if(root == null){ return new Result(0, Integer.MIN_VALUE);}
         Result leftResult  = helper(root.left);
         Result rightResult = helper(root.right);
@@ -82,7 +83,7 @@ public class Binary_Tree_Maximum_Path_Sum {
         return new Result(singlePath, maxPath);
     }
 
-    public int maxPathSum(TreeNode root) {
+    public int maxPathSum(TreeNode<Integer> root) {
         Result result = helper(root);
         return result.maxPath;
     }

@@ -1,5 +1,7 @@
 package Lintcode.Array;
 
+import java.util.Arrays;
+
 /**
 Remove Duplicates from Sorted Array II Show result 
 
@@ -25,6 +27,35 @@ Easy Remove Duplicates from Sorted Array
  */
 public class Remove_Duplicates_from_Sorted_Array_II {
 
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		removeDuplicates1();
+//		int[] arr = {1,2,2,3,3,3,4,4,4,4,5,5,5,5,5,6,6,6,6,6,6,7,7,7,7,7,7,7};
+		int[] arr = {3,3,3,3,3,3,3,3,8};
+		removeDuplicates00(arr);
+//		removeDuplicates(arr);
+//		removeDuplicates1(arr);
+	}
+	
+//	Best solution:
+    public static int removeDuplicates00(int[] nums) {
+    	int limit = 5;
+        if (nums.length <= limit) return nums.length;
+        int index = limit;
+        for (int i = limit; i < nums.length; i++){
+            if (nums[i] != nums[index - limit]){
+            	nums[index++] = nums[i];
+            }
+        }
+        
+        System.out.println(""+Arrays.toString(nums));
+        System.out.println(""+index);
+        return index;
+    }
+
 	//my solution, worked, better than jiuzhang
     public static int removeDuplicates(int[] A) {
         // write your code here
@@ -47,6 +78,7 @@ public class Remove_Duplicates_from_Sorted_Array_II {
                 }
             }
         }
+        System.out.println(""+Arrays.toString(A));
         return pos + 1;//size+1即是长度或者个数
 
     }
@@ -71,12 +103,6 @@ public class Remove_Duplicates_from_Sorted_Array_II {
         return cur;
     }
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//		removeDuplicates1();
-	}
 
+	
 }

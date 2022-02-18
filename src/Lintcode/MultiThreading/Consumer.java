@@ -16,7 +16,7 @@ public class Consumer implements Runnable{
             //consuming messages until exit message is received
             while((msg = queue.take()).getMsg() !="exit"){
 	            Thread.sleep(10);
-	            System.out.println("Consumed "+msg.getMsg());
+	            System.out.println("=====Consumed "+msg.getMsg());
             }
         }catch(InterruptedException e) {
             e.printStackTrace();

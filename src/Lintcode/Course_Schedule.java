@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import Lintcode.Array.Matrix;
+import Utils.MatrixUtils;
 
 /**
 207. Course Schedule 
@@ -67,7 +67,7 @@ public class Course_Schedule {
 	             }
 	            matrix[pre][ready] = 1;
 	        }
-	        System.out.println(""+Matrix.fromMatrixToString(matrix));
+	        System.out.println(""+MatrixUtils.fromMatrixToString(matrix));
 	        System.out.println("                         "+Arrays.toString(indegree));
 	        
 	        int count = 0;

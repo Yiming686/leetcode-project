@@ -19,13 +19,33 @@ public class LC_022_Generate_Parentheses {
     public static List<String> generateParenthesis3(int n) {
         List<String> result = new ArrayList<String>();
         if(n <= 0) {
+        	
             return result;
         }
         int[] count = new int[1];
-        generateParenthesis(result,count, "", n, n);
+//        generateParenthesis(result,count, "", n, n);
+        generateIfParenthesis(result,count, "", n, n);
+        System.out.println("size: "+result.size());
+        System.out.println(""+result);
         return result;
+        
+
     }
-    
+	public static void generateIfParenthesis(List<String> result ,int[] count, String s, int left, int right) {
+		if(left == 0 && right == 0){
+			count[0]++;
+//			System.out.println(""+count[0]);
+			result.add(s);
+		}
+		if(left > right || left < 0 || right < 0){
+			return;
+		}
+		generateIfParenthesis(result, count, s + "{", left - 1,right);
+		generateIfParenthesis(result, count, s+"}", left,right - 1);
+	}    
+	
+	
+	
 	public static void generateParenthesis( List<String> result ,int[] count, String s, int left, int right) {
 	    
 		if(left == 0 && right == 0) {
@@ -38,13 +58,13 @@ public class LC_022_Generate_Parentheses {
 		}
 		if(left < 0 || right < 0)return;
 		//如果不判断，left和right是否小于0，则Runtime Error Message: java.lang.StackOverflowError
-//		if(left > right || left < 0 || right < 0) {
-//			return; 	
-//		}
+		if(left > right || left < 0 || right < 0) {
+			return; 	
+		}
 		//s去一个"(",left减一，s取一个")", right义减一
 		//其实是先取"(", 再取")"
-		generateParenthesis(result, count,s + "(", left - 1, right);
 		generateParenthesis(result, count,s + ")", left, right - 1);
+		generateParenthesis(result, count,s + "(", left - 1, right);
 	}
 
 	//jiuzhang solution, modified, worked

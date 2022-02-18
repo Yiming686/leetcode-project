@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import JavaInterviewQueston.Samsung_Interview.TreeNode;
-import Lintcode.Array.Matrix;
+import Utils.MatrixUtils;
 
 /**
 
@@ -82,7 +82,7 @@ public class All_Unique_Sub_Palindrome {
 		System.out.println("list:--> "+list.size());
 		System.out.println(""+set);System.out.println(""+list);
 		System.out.println(""+s);
-		System.out.println(""+Matrix.fromMatrixToString(arr));
+		System.out.println(""+MatrixUtils.fromMatrixToString(arr));
 		return result;
 	}
     //conkey: worked
@@ -112,8 +112,8 @@ public class All_Unique_Sub_Palindrome {
 						set.add(subStr);
 					}
 					isPalindromeMatrix[i][i + subLen - 1] = true;
-					System.out.println(""+Matrix.fromRowOfMatrixToString(isPalindromeMatrix, i-1 > 0? i-1:0));
-					System.out.println(""+Matrix.fromRowOfMatrixToString(isPalindromeMatrix, i));
+					System.out.println(""+MatrixUtils.fromRowOfMatrixToString(isPalindromeMatrix, i-1 > 0? i-1:0));
+					System.out.println(""+MatrixUtils.fromRowOfMatrixToString(isPalindromeMatrix, i));
 				}
 			}
 		}

@@ -41,23 +41,23 @@ Medium Backpack II *
  */
 public class Backpack_I {
 
-    public static int backPack44(int m, int[] A) {  
-        if (A.length==0) return 0;  
-        int len = A.length;  
-        int[] max = new int[m+1];  
+    public static int backPack44(int target, int[] sizes) {  
+        if (sizes.length==0) return 0;  
+        int len = sizes.length;  
+        int[] max = new int[target+1];  
         // max[0] = 0;  
-        for (int i=0;i<len;i++){  
-            int size = A[i];
+        for (int i=0;i<len;i++){ //开启第i的天空，过去值即第i-1天的情形 
+            int size = sizes[i];
 //            for (int j=0;j<=m;j++){  //wrong here
-             for (int j=m;j>=0;j--){  //not easy to understand here
+             for (int j=target;j>=0;j--){  //not easy to understand here
                 if (j-size>=0){ //A[i-1]为带装物品大小  
-                	max[j] = Math.max(max[j-size]+size, max[j]);	
+                	max[j] = Math.max(max[j], max[j-size]+size);	//此时得到的上一轮的值，更新前看到了什么，
                 }  
                 System.out.println("i:j "+ i + ":"+j+" "+Arrays.toString(max));
             }
              System.out.println();
         }
-        return max[m];  
+        return max[target];  
     }  
 //1.不可重复取用，如果袋子大于全体和，直接返回
 //2.每件东西两种情况，放或者不放，所以必须比较Math.max()
@@ -65,7 +65,7 @@ public class Backpack_I {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		int[] arr = {3,4,8,5};
-		int k = 10;
+		int k = 20;
 		int[] arr = {2,3,5,7};
 //		int[] arr = {3,7,8,5};
 //		int k = 20;

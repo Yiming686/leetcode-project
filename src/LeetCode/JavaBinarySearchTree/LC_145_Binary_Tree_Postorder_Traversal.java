@@ -69,11 +69,12 @@ public class LC_145_Binary_Tree_Postorder_Traversal {
                 } else if (curr.right != null) {
                     stack.push(curr.right);
                 }
+                //else do nothing::curr.left == null; curr.right == null; next iteration: prev == curr
             } else if (curr.left == prev) { // traverse up the tree from the left
                 if (curr.right != null) {
                     stack.push(curr.right);
                 }
-            } else { // traverse up the tree from the right
+            } else { // traverse up the tree from the right or prev == curr
                 result.add(curr.val);
                 stack.pop();
             }

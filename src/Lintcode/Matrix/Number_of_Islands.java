@@ -47,7 +47,7 @@ public class Number_of_Islands {
 //				{false, false, false, false, false} };
 		System.out.println("before:\n"+Matrix.fromMatrixToString(matrix));
 		int num = numIslands15(matrix);
-		System.out.println(""+num);
+		System.out.println("Num of Islands: "+num);
 		System.out.println("after:\n"+Matrix.fromMatrixToString(matrix));
 		System.out.println(""+num);
 	}
@@ -171,17 +171,17 @@ public class Number_of_Islands {
         int colLen = grid[0].length;
         
         int count = 0;
-        int[] size = new int[1];
+        int[] area = new int[1];
         int maxSize = 0;
         for(int i = 0; i < rowLen; i++){
             for(int j = 0; j < colLen; j++){
                 if(grid[i][j] == 1){
                     count++;
-                    removeIsLands15(grid, i, j, size);
-                    System.out.println("Curr size: "+size[0]);
-                    maxSize = Math.max(maxSize, size[0]);
-                    size[0] = 0;
-//                    grid[i][j] = 1;
+                    removeIsLands15(grid, i, j, area);
+                    System.out.println("Curr Area: "+area[0]);
+                    maxSize = Math.max(maxSize, area[0]);
+                    area[0] = 0;
+                    grid[i][j] = 1;
                     // grid[i][j] = true;
                 }
             }
@@ -189,7 +189,7 @@ public class Number_of_Islands {
         System.out.println("Max Size: "+maxSize);
         return count;        
     }
-    private static int size = 0;
+//    private static int size = 0;
     private static void removeIsLands15(int[][] grid, int i, int j, int[] size){
         // if(grid == null)  return;
         //遍历规则：下面三行给所有递归点制定了规则三条，也是三条basecases
@@ -203,7 +203,7 @@ public class Number_of_Islands {
         removeIsLands15(grid, i,   j+1, size);
         removeIsLands15(grid, i-1, j  , size);
         removeIsLands15(grid, i,   j-1, size);
-        grid[i][j] = 1;
+//        grid[i][j] = 1;
     }
 
 

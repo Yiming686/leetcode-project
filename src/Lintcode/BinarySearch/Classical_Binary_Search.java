@@ -11,7 +11,6 @@ public class Classical_Binary_Search {
 	
     public static int findPosition(int[] A, int target) {
         // Write your code here
-
         return findPosition(A, 0, A.length - 1, target);
     }
     private static int findPosition(int[] A, int left, int right, int target){

@@ -30,7 +30,7 @@ public class LC_206_Reverse_Linked_List {
 			curr = next;
 		}
 //		最后记得head变量从始至终都没有改变,他是最后一个元素,所以他的next要设置为null.
-		head.next = null;
+		//head.next = null;
 		return pre;
 	}
 

@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import Lintcode.Array.Matrix;
+import Utils.MatrixUtils;
 
 /**
 
@@ -82,7 +82,7 @@ public class Kth_Largest_in_N_Arrays {
             	heap.offer(new Point(i, cols - 1, arrays[i][cols - 1]));                
             }
         }
-        System.out.println(""+Matrix.fromMatrixToString(arrays));
+        System.out.println(""+MatrixUtils.fromMatrixToString(arrays));
         //poll() k-1 times
         for (int i = 0; i < k - 1; i++) {
             Point curr = heap.poll();//largest in the heap

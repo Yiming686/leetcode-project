@@ -26,7 +26,7 @@ public class RocketFuel_Racer_Rater_1 {
         Arrays.sort(racersByStartTime, new Comparator<Racer>(){
             @Override
             public int compare(Racer r1, Racer r2) {
-                return r1._start.compareTo(r2._start);
+                return r1.start.compareTo(r2.start);
             }            
         });
         
@@ -34,7 +34,7 @@ public class RocketFuel_Racer_Rater_1 {
         Arrays.sort(racersByEndTime, new Comparator<Racer>(){
             @Override
             public int compare(Racer r1, Racer r2) {
-                return r1._end.compareTo(r2._end);
+                return r1.end.compareTo(r2.end);
             }            
         });
         
@@ -57,7 +57,7 @@ public class RocketFuel_Racer_Rater_1 {
 //            });
             whereToInsert = whereToInsert == -1 ? 0 : whereToInsert;
             //相减即是得分
-            racer._score = lenBeforeInsersion - whereToInsert;
+            racer.score = lenBeforeInsersion - whereToInsert;
             buildingRacersByStartTime.add(whereToInsert, racer);
         }
         
@@ -65,25 +65,25 @@ public class RocketFuel_Racer_Rater_1 {
         Arrays.sort(racersByScore, new Comparator<Racer>(){
             @Override
             public int compare(Racer r1, Racer r2) {
-                int t = r1._score - r2._score;
+                int t = r1.score - r2.score;
                 if(t!=0)
                     return t;
-                return r1._id.compareTo(r2._id);
+                return r1.id.compareTo(r2.id);
             }            
         });
         
         System.out.println("=====input====");
         for(Racer r : racers)
-            System.out.println(r._id+","+r._start+","+r._end);
+            System.out.println(r.id+","+r.start+","+r.end);
         System.out.println("=====racers by start time====");
         for(Racer r : racersByStartTime)
-            System.out.println(r._id+","+r._start+","+r._end);
+            System.out.println(r.id+","+r.start+","+r.end);
         System.out.println("=====racers by end time====");
         for(Racer r : racersByEndTime)
-            System.out.println(r._id+","+r._start+","+r._end);
+            System.out.println(r.id+","+r.start+","+r.end);
         System.out.println("=====racers by score====");
         for(Racer r : racersByScore)
-            System.out.println(r._id+",score:"+ r._score +","+r._start+","+r._end);
+            System.out.println(r.id+",score:"+ r.score +","+r.start+","+r.end);
     }
 
     /**
@@ -96,9 +96,9 @@ public class RocketFuel_Racer_Rater_1 {
         while(iLeft <= iRight)
         {
             int iMid = (iLeft+iRight)/2;
-            if(r._start == constructingRacersInStartTimeOrder.get(iMid)._start)
+            if(r.start == constructingRacersInStartTimeOrder.get(iMid).start)
                 return iMid;
-            if(r._start < constructingRacersInStartTimeOrder.get(iMid)._start)
+            if(r.start < constructingRacersInStartTimeOrder.get(iMid).start)
                 iRight = iMid -1;
             else
                 iLeft = iMid +1;
@@ -108,16 +108,16 @@ public class RocketFuel_Racer_Rater_1 {
 
 }
 class Racer {
-    Long _id;
-    Long _start;
-    Long _end;
-    int _score;
+    Long id;
+    Long start;
+    Long end;
+    int score;
     
     public Racer(Long id, Long start, Long end)
     {
-        _id = id;
-        _start = start;
-        _end = end;
+        this.id = id;
+        this.start = start;
+        this.end = end;
     }    
 }
 

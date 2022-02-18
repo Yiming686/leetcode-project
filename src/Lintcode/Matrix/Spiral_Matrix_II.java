@@ -1,6 +1,6 @@
 package Lintcode.Matrix;
 
-import Lintcode.Array.Matrix;
+import Utils.MatrixUtils;
 
 /**
 Spiral Matrix II Show result 
@@ -32,12 +32,12 @@ public class Spiral_Matrix_II {
 		// TODO Auto-generated method stub
 //		Matrix.fromSubMatrixToString(generateMatrix(33), 7, 8, 15,15);
 //		System.out.println(""+Matrix.fromRowOfMatrixToString(generateMatrix(0), 3));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(0)));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(1)));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(2)));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(3)));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(4), false));
-		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(9), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(0)));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(1)));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(2)));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(3)));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(4), false));
+		System.out.println(""+MatrixUtils.fromMatrixToString(generateMatrix(9), false));
 //		System.out.println(""+Matrix.fromMatrixToString(generateMatrix(5), false));
 //		System.out.println(""+Matrix.fromSubMatrixToString(generateMatrix(16), 8, 9, 14,14));
 //		System.out.println(""+Matrix.fromSubMatrixToString(generateMatrix(33), 7, 8, 15,15));

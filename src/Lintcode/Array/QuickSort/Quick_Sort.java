@@ -2,7 +2,6 @@ package Lintcode.Array.QuickSort;
 
 import java.util.Arrays;
 
-import com.sun.jmx.snmp.internal.SnmpAccessControlSubSystem;
 
 public class Quick_Sort {
 

@@ -1,0 +1,77 @@
+
+== FAKE TP CLASS ==========================================================================================
+
+    static class TP{
+        public static final Boolean IS_BASE_CASE = Boolean.TRUE;
+		public static TP build(String id, TP parent) {
+			return null;
+		}
+		public static TP build(String id, TP parent, Object... objects) {
+			return null;
+		}		
+		public static TP build(TP parent, Object... objects) {
+			return null;
+		}
+        public static TP build(String paraList, String paraFilter, String id,  TP parent, Object... objects) {
+			return null;
+		}		
+        public static TP build(String paraList, String paraFilter, TP parent, Object... objects) {
+			return null;
+		}
+        public static TP build(boolean isBaseCaseTP, TP parent, Object... objects) {
+			return null;
+		}
+        public static void print(){
+            return;
+        }
+        	public static String toStr(int[] arr) {
+			return null;
+		}        
+        public static String toStr(TreeNode node) {
+            return null;
+        }
+        public static String toStr(Set set) {
+            return null;
+        }
+        public static void mark(){
+            return;
+        }
+    }
+
+============================================================================================================
+
+
+public class SharedCode{
+
+  private void swap(int[] arr, int start, int end){
+    int temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+  }
+  private void swap(Integer[] arr, int start, int end){
+      int temp = arr[start];
+      arr[start] = arr[end];
+      arr[end] = temp;
+  }
+
+  private void swap(char[] arr, int start, int end){
+    char temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+  }
+  
+    private void swap(char[] arr, int left, int right){
+     char temp = arr[left];
+     arr[left] = arr[right];
+     arr[right] = temp;
+  }
+  
+    private void swap(char[] arr, int left, int right){
+     char temp = arr[left];
+     arr[left] = arr[right];
+     arr[right] = temp;
+  }
+  
+}
+
+  

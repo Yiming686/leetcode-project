@@ -45,8 +45,8 @@ public class Valid_Parentheses {
     // 
     // Best, worked, keep in mind
     // 小小题目别有洞天，谁研究的透彻呢
-    public boolean isValidParentheses(String s)  {
-        if(s == null || s.length() == 0) {
+    public boolean isValidParentheses(String str)  {
+        if(str == null || str.length() == 0) {
             return true;
         }    
         Stack<Character> stack = new Stack<Character>();            
@@ -54,7 +54,7 @@ public class Valid_Parentheses {
         map.put(')','(');
         map.put('}','{');
         map.put(']','[');
-        for(char ch : s.toCharArray()){
+        for(char ch : str.toCharArray()){
             if("({[".contains(String.valueOf(ch))){
                 stack.push(ch);
             }else if(map.containsKey(ch)){//strong hire, 对别的不处理，通用解法

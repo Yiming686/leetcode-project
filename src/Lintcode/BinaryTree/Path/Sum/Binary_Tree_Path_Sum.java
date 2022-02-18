@@ -3,6 +3,9 @@ package Lintcode.BinaryTree.Path.Sum;
 import java.util.ArrayList;
 import java.util.List;
 
+import Utils.TreeNodeUtils;
+import Utils.TreeNodeUtils.TreeNode;
+
 
 /**
  * Binary Tree Path Sum Show result
@@ -57,11 +60,11 @@ public class Binary_Tree_Path_Sum {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String TreeNodeStrIn ="{1,2,4,2,3}";
-		TreeNode root = TreeNode.fromStringToTree(TreeNodeStrIn);
+		TreeNode<Integer> root = TreeNodeUtils.fromStringToTree(TreeNodeStrIn, TreeNode.class, Integer.class);
 		System.out.println(""+binaryTreePathSum(root, 5));
 		
 		String TreeNodeStrIn2 ="{5,4,8,11,#,13,4,7,2,#,#,5,1}";
-		TreeNode root2 = TreeNode.fromStringToTree(TreeNodeStrIn2);
+		TreeNode<Integer> root2 = TreeNodeUtils.fromStringToTree(TreeNodeStrIn2, TreeNode.class, Integer.class);
 //		System.out.println(""+ travereTree(root2));
 		travereTree(root2);
 		System.out.println(""+binaryTreePathSum(root2, 22));
@@ -79,7 +82,7 @@ public class Binary_Tree_Path_Sum {
 	}
 
 	//找出所以可能的从根到叶子的路径，一旦路径和等于target，加入result
-    public static List<List<Integer>> binaryTreePathSum(TreeNode root, int target) {
+    public static List<List<Integer>> binaryTreePathSum(TreeNode<Integer>  root, int target) {
         // Write your code here
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         if(root == null) return result;
@@ -92,7 +95,7 @@ public class Binary_Tree_Path_Sum {
     }
     
     //helper的含义：在root为根节点的树中，寻找当前和sum为target的路径，加入list，加入result
-    private static void helper(List<List<Integer>> result, List<Integer> list, TreeNode root, int sum, int target){
+    private static void helper(List<List<Integer>> result, List<Integer> list, TreeNode<Integer>  root, int sum, int target){
         if(root == null) return;
         System.out.println("::"+root.val);
         //根据题意必须保证是叶子节点

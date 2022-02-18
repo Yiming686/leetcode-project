@@ -37,40 +37,40 @@ public class Trapping_Rain_Water {
 
 	
     //best solution than jiuzhang, very clear
-    public static int trapRainWater(int[] A) {  
-        if (A == null || A.length < 3) return 0;  
+    public static int trapRainWater(int[] height) {  
+        if (height == null || height.length < 3) return 0;  //少于三个没意义
           
-        int ans = 0;  
-        int l = 0, r = A.length - 1;  
+        int max = 0;  
+        int left = 0, right = height.length - 1;  
           
         // find the left and right edge which can hold water  
-        while (l < r && A[l] <= A[l + 1]) l++;  //1, length - 1
-        while (l < r && A[r] <= A[r - 1]) r--;  //1, length - 1
+        while (left < right && height[left] <= height[left + 1]) left++;  //1, length - 1
+        while (left < right && height[right] <= height[right - 1]) right--;  //1, length - 1
 //        System.out.println("l:r "+l+":"+r);
 
-        while (l < r) {
-            System.out.println("l:r "+l+":"+r);
-            int left  = A[l];  
-            int right = A[r];  
+        while (left < right) {
+            System.out.println("l:r "+left+":"+right);
+            int leftHeight  = height[left];  
+            int rightHeight = height[right];  
 //            System.out.println("left:right "+left+":"+right);
-            if (left <= right) {  
+            if (leftHeight <= rightHeight) {  
                 // add volum until an edge larger than the left edge  
                 // l++;
-                while (l < r && left >= A[++l]) {  //等号必须的，否则Time Limit Exceeded
+                while (left < right && leftHeight >= height[++left]) {  //等号必须的，否则Time Limit Exceeded
 //                    System.out.println("left:right "+left+":"+right);
-                    ans += left - A[l];  
-                    System.out.println("l<r::l:r:A[l]:left:right:ans "+l+" : "+r+" : "+A[l]+" : "+left+" : "+right+" : "+ans);
+                    max += leftHeight - height[left];  
+                    System.out.println("l<r::l:r:A[l]:left:right:ans "+left+" : "+right+" : "+height[left]+" : "+leftHeight+" : "+rightHeight+" : "+max);
 
                     // l++;
                 }  
             } else {  
                 // add volum until an edge larger than the right volum  
-                while (l < r && A[--r] <= right) {  
-                    ans += right - A[r];  
-                    System.out.println("l>=r::l:r:A[l]:left:right:ans "+l+" : "+r+" : "+A[l]+" : "+left+" : "+right+" : "+ans);
+                while (left < right && height[--right] <= rightHeight) {  
+                    max += rightHeight - height[right];  
+                    System.out.println("l>=r::l:r:A[l]:left:right:ans "+left+" : "+right+" : "+height[left]+" : "+leftHeight+" : "+rightHeight+" : "+max);
                 }  
             }  
         }  
-        return ans;  
+        return max;  
     }  
 }

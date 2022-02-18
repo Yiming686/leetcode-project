@@ -3,6 +3,8 @@ package Lintcode.BinaryTree.Path.Sum;
 import java.util.ArrayList;
 import java.util.List;
 
+import Utils.TreeNodeUtils.TreeNode;
+
 public class Binary_Tree_Paths {
 
 	public static void main(String[] args) {
@@ -10,7 +12,7 @@ public class Binary_Tree_Paths {
 //		String.v
 	}
 
-    public static List<String> binaryTreePaths(TreeNode root) {
+    public static List<String> binaryTreePaths(TreeNode<Integer>  root) {
         List<String> result = new ArrayList<String>();
         if (root == null) {
             return result;
@@ -19,7 +21,7 @@ public class Binary_Tree_Paths {
         return result;
     }
     
-    private static void helper(TreeNode root, String path, List<String> result) {
+    private static void helper(TreeNode<Integer>  root, String path, List<String> result) {
         if (root == null) {
             return;
         }

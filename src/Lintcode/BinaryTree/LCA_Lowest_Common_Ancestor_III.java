@@ -4,14 +4,30 @@ public class LCA_Lowest_Common_Ancestor_III {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		TreeNode root = TreeNode.fromStringToTree("{4,3,7,#,#,5,6}");
-		System.out.println(""+TreeNode.convertToString(root));
-		TreeNode node1 = root.left;
-		TreeNode node2 = root.right.left;
-//		node2 = new TreeNode(78);
-		TreeNode comm = lowestCommonAncestor3( root,  node1, node2);
-		System.out.println("findLowestCommonAncestorBT: "+ findLowestCommonAncestorBT(root, node1,node2).val);
-		System.out.println(""+ (comm == null ? null : comm.val));
+		TreeNode rootA = TreeNode.fromStringToTree(" {5,2,5,1,3,5,6,null,null,null,4,null,5,null,7} " );
+//		TreeNode.convertToString(rootA);
+		System.out.println(""+TreeNode.convertToString(rootA, "null"));
+		
+		TreeNode rootB = TreeNode.fromStringToTree("   { 5  ,2 ,5,1,3,5 ,6,null,null,null,4,null,5,null,7    }   " );
+//		TreeNode.convertToString(rootA);
+		System.out.println(""+TreeNode.convertToString(rootB));
+
+		TreeNode rootC = TreeNode.fromStringToTree(" {5,2,5,1,3,5,6, # , # , # ,4, # ,5, # ,7} " );
+//		TreeNode.convertToString(rootA);
+		System.out.println(""+TreeNode.convertToString(rootC));
+		
+		TreeNode rootD = TreeNode.fromStringToTree("   { 5  ,2 , 5 ,  1   , 3   ,    5 ,   6, # , # , # ,4, # ,5, # ,7    }   " );
+//		TreeNode.convertToString(rootA);
+		System.out.println(""+TreeNode.convertToString(rootD));
+		
+//		TreeNode root = TreeNode.fromStringToTree("{4,3,7,#,#,5,6}");
+//		System.out.println(""+TreeNode.convertToString(root));
+//		TreeNode node1 = root.left;
+//		TreeNode node2 = root.right.left;
+////		node2 = new TreeNode(78);
+//		TreeNode comm = lowestCommonAncestor3( root,  node1, node2);
+//		System.out.println("findLowestCommonAncestorBT: "+ findLowestCommonAncestorBT(root, node1,node2).val);
+//		System.out.println(""+ (comm == null ? null : comm.val));
 	}
 	
 //	如果此方法直接返回LCA，会有什么问题？TreeNode lowestCommonAncestor(TreeNode root, TreeNode A, TreeNode B)
